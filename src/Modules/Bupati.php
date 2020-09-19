@@ -2,7 +2,7 @@
 
 namespace SotkClient\Modules;
 
-class Bupati extends AbstractModule
+class Bupati extends ModuleAbstract
 {
     /**
      * base endpoint of module

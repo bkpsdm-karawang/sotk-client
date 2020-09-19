@@ -1,6 +1,6 @@
 <?php
 
-namespace SotkClient\Facades;
+namespace SotkClient\Laravel\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

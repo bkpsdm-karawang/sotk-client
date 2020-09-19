@@ -12,12 +12,13 @@
         "php": "^7.3",
         "guzzlehttp/guzzle": "^7.0",
         "illuminate/support": "^8.5",
-        "jenssegers/model": "^1.4"
+        "illuminate/database": "^8.5"
     },
     "license": "MIT",
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
+            "SotkClient\\Laravel\\": "Laravel/",
             "SotkClient\\": "src/"
         }
     },
@@ -29,10 +30,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "SotkClient\\SotkClientServiceProvider"
+                "SotkClient\\Laravel\\SotkClientServiceProvider"
             ],
             "aliases": {
-                "Socialite": "SotkClient\\Facades\\SotkClient"
+                "Socialite": "SotkClient\\Laravel\\Facades\\SotkClient"
             }
         }
     }

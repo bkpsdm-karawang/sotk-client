@@ -1,12 +1,13 @@
 <?php
 
-namespace SotkClient;
+namespace SotkClient\Laravel;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Env;
 use Illuminate\Support\ServiceProvider;
+use SotkClient\ClientManager;
 
-class SotkClientServiceProvider extends ServiceProvider 
+class SotkClientServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.

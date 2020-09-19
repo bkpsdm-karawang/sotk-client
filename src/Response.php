@@ -1,16 +1,17 @@
 <?php
 
-namespace SotkClient\Response;
+namespace SotkClient;
 
+use Illuminate\Support\Collection;
 use GuzzleHttp\Psr7\Response as PsrResponse;
+use SotkClient\Models\Model;
 
-class Generator
+class Response
 {
     /**
      * model
-     * TODO: dont use string
      *
-     * @var string
+     * @var Model
      */
     protected $model;
 
@@ -31,10 +32,10 @@ class Generator
     /**
      * constructor
      *
-     * @param string $model
+     * @param Model $model
      * @return void
      */
-    public function __construct(string $model)
+    public function __construct(Model $model)
     {
         $this->model = $model;
     }
@@ -43,17 +44,32 @@ class Generator
      * generate listing data
      *
      * @param \GuzzleHttp\Psr7\Response $response
-     * @return
+     * @return \Illuminate\Support\Collection
      */
-    public function generateListing(PsrResponse $response)
+    public function generateListing(PsrResponse $response) : Collection
     {
         $data = [];
 
         foreach ($response = $this->getContentFromResponse($response) as $object) {
-            array_push($data, new $this->model($object));
+            array_push($data, $this->model->replicate()->fill($object));
         }
 
-        return $data;
+        return new Collection($data);
+    }
+
+    /**
+     * generate listing data
+     *
+     * @param \GuzzleHttp\Psr7\Response $response
+     * @return \SotkClient\Models\Model
+     */
+    public function generateDetail(PsrResponse $response) : Model
+    {
+        $data = $this->getContentFromResponse($response);
+
+        $this->model->fill($data);
+
+        return $this->model;
     }
 
     /**
