@@ -1,0 +1,38 @@
+{
+    "name": "bkpsdm-karawang/sotk-php-client",
+    "type": "library",
+    "description": "PHP Client for Sistem Informasi Pegawai BKPSDM Karawang",
+    "authors": [
+        {
+            "name": "Denma Syarikin",
+            "email": "denmasyarikin@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.3",
+        "guzzlehttp/guzzle": "^7.0",
+        "illuminate/support": "^8.5"
+    },
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "SotkClient\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SotkClient\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SotkClient\\SotkClientServiceProvider"
+            ],
+            "aliases": {
+                "Socialite": "SotkClient\\Facades\\SotkClient"
+            }
+        }
+    }
+}
