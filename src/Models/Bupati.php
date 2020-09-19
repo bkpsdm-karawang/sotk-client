@@ -2,7 +2,7 @@
 
 namespace SotkClient\Models;
 
-class Bupati Extends Base
+class Bupati Extends Model
 {
 
 }

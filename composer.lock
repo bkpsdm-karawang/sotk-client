@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e849b504523522c1c988967e596d5227",
+    "content-hash": "5fd1c9ac1367603cab39a4ffcbef0100",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -530,6 +530,57 @@
                 "source": "https://github.com/laravel/framework"
             },
             "time": "2020-09-17T18:04:00+00:00"
+        },
+        {
+            "name": "jenssegers/model",
+            "version": "v1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jenssegers/model.git",
+                "reference": "546aa41336495ca3e4afd3cd155d454d1c831384"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jenssegers/model/zipball/546aa41336495ca3e4afd3cd155d454d1c831384",
+                "reference": "546aa41336495ca3e4afd3cd155d454d1c831384",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^5.0|^6.0|^7.0|^8.0",
+                "illuminate/support": "^4.0|^5.0|^6.0|^7.0|^8.0"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "*",
+                "phpunit/phpunit": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jenssegers\\Model\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jens Segers",
+                    "homepage": "https://jenssegers.com"
+                }
+            ],
+            "description": "An Laravel eloquent-like model class, for Laravel and other frameworks",
+            "homepage": "https://github.com/jenssegers/model",
+            "keywords": [
+                "eloquent",
+                "laravel",
+                "model"
+            ],
+            "support": {
+                "issues": "https://github.com/jenssegers/model/issues",
+                "source": "https://github.com/jenssegers/model/tree/v1.4.0"
+            },
+            "time": "2020-09-11T11:05:47+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -1294,7 +1345,9 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": "^7.3"
+    },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"
 }
