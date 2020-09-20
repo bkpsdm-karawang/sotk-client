@@ -6,13 +6,14 @@ use GuzzleHttp\ClientInterface;
 use Illuminate\Support\Manager;
 use InvalidArgumentException;
 use SotkClient\Modules\Bupati;
-use SotkClient\Modules\Lokasi\Desa;
-use SotkClient\Modules\Lokasi\Kabupaten;
-use SotkClient\Modules\Lokasi\Kecamatan;
-use SotkClient\Modules\Lokasi\Provinsi;
+use SotkClient\Registrar\Lokasi;
+use SotkClient\Registrar\Pendidikan;
 
 class ClientManager extends Manager
 {
+    use Lokasi;
+    use Pendidikan;
+
     /**
      * guzzle client interface
      *
@@ -49,56 +50,6 @@ class ClientManager extends Manager
      * @return \SotkClient\Modules\AbstractModule
      */
     protected function createBupatiDriver()
-    {
-        return new Bupati($this->client);
-    }
-
-    /**
-     * Create an instance of the specified driver.
-     *
-     * @return \SotkClient\Modules\AbstractModule
-     */
-    protected function createLokasiProvinsiDriver()
-    {
-        return new Provinsi($this->client);
-    }
-
-    /**
-     * Create an instance of the specified driver.
-     *
-     * @return \SotkClient\Modules\AbstractModule
-     */
-    protected function createLokasiDesaDriver()
-    {
-        return new Desa($this->client);
-    }
-
-    /**
-     * Create an instance of the specified driver.
-     *
-     * @return \SotkClient\Modules\AbstractModule
-     */
-    protected function createLokasiKecamatanDriver()
-    {
-        return new Kecamatan($this->client);
-    }
-
-    /**
-     * Create an instance of the specified driver.
-     *
-     * @return \SotkClient\Modules\AbstractModule
-     */
-    protected function createLokasiKabupatenDriver()
-    {
-        return new Kabupaten($this->client);
-    }
-
-    /**
-     * Create an instance of the specified driver.
-     *
-     * @return \SotkClient\Modules\AbstractModule
-     */
-    protected function createProvinsipDriver()
     {
         return new Bupati($this->client);
     }

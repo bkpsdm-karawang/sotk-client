@@ -1,12 +1,12 @@
 <?php
 
-namespace SotkClient\Cast\Lokasi;
+namespace SotkClient\Cast\Pendidikan;
 
 use Illuminate\Support\Collection;
 use SotkClient\Cast\BaseCasting;
-use SotkClient\Models\Lokasi\Desa as DesaModel;
+use SotkClient\Models\Pendidikan\PerguruanTinggi as PerguruanTinggiModel;
 
-class DesaCasting extends BaseCasting
+class PerguruanTinggiCasting extends BaseCasting
 {
     /**
      * Cast the given value.
@@ -21,12 +21,12 @@ class DesaCasting extends BaseCasting
     {
         if ($this->isChildren) {
             return new Collection(array_map(function($data) {
-                return new DesaModel($data);
+                return new PerguruanTinggiModel($data);
             }, $value ?: []));
         }
 
         if (! is_null($value)) {
-            return new DesaModel($value);
+            return new PerguruanTinggiModel($value);
         }
 
         return null;

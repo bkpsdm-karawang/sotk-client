@@ -22,8 +22,13 @@ class KabupatenCasting extends BaseCasting
         if ($this->isChildren) {
             return new Collection(array_map(function($data) {
                 return new KabupatenModel($data);
-            }, $value));
+            }, $value ?: []));
         }
-        return new KabupatenModel($value);
+
+        if (! is_null($value)) {
+            return new KabupatenModel($value);
+        }
+
+        return null;
     }
 }

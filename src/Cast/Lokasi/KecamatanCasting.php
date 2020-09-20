@@ -22,8 +22,14 @@ class KecamatanCasting implements BaseCasting
         if ($this->isChildren) {
             return new Collection(array_map(function($data) {
                 return new KecamatanModel($data);
-            }, $value));
+            }, $value ?: []));
         }
-        return new KecamatanModel($value);
+
+        if (! is_null($value)) {
+            return new KecamatanModel($value);
+        }
+
+        return null;
+
     }
 }

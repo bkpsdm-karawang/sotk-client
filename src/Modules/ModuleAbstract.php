@@ -69,6 +69,18 @@ abstract class ModuleAbstract implements ModuleContract
     }
 
     /**
+     * search query string
+     * @param string $keyword
+     * @return ModuleAbstract
+     */
+    public function search(string $keyword)
+    {
+        $this->query['search'] = $keyword;
+
+        return $this;
+    }
+
+    /**
      * get listing data.
      *
      * @param array $query
