@@ -3,12 +3,26 @@
 namespace SotkClient\Laravel;
 
 use GuzzleHttp\Client;
-use Illuminate\Support\Env;
+use Illuminate\Config\Repository as Config;
 use Illuminate\Support\ServiceProvider;
 use SotkClient\ClientManager;
 
 class SotkClientServiceProvider extends ServiceProvider
 {
+    /**
+     * Bootstrap the application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/config.php' => config_path('sotk.php'),
+            ], 'sotk-config');
+        }
+    }
+
     /**
      * Register the service provider.
      *
@@ -16,19 +30,32 @@ class SotkClientServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('sotk.client', function ($app) {
-            return new ClientManager($this->createGuzzleClient());
+        $this->mergeConfigFrom(__DIR__.'/config.php', 'sotk');
+        $config = $this->app->make(Config::class)->get('sotk');
+
+        $this->app->singleton('sotk.client', function () use ($config) {
+            return new ClientManager($this->createGuzzleClient($config));
+        });
+
+        $this->app->singleton('sotk.route', function () use ($config) {
+            return new Router($config);
         });
     }
 
-    protected function createGuzzleClient()
+    /**
+     * create guzzle client
+     *
+     * @param array $config
+     * @return \GuzzleHttp\Client
+     */
+    protected function createGuzzleClient(array $config)
     {
         return new Client([
             'verify' => false,
-            'base_uri' => Env::get('SOTK_CLIENT_URI'),
+            'base_uri' => $config['client_uri'],
             'auth' => [
-                Env::get('SOTK_CLIENT_ID'),
-                Env::get('SOTK_CLIENT_SECRET')
+                $config['client_id'],
+                $config['client_secret']
             ]
         ]);
     }
@@ -40,6 +67,9 @@ class SotkClientServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['sotk.client'];
+        return [
+            'sotk.client',
+            'sotk.route'
+        ];
     }
 }

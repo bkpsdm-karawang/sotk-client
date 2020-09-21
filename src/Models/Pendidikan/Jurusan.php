@@ -2,10 +2,11 @@
 
 namespace SotkClient\Models\Pendidikan;
 
+use Illuminate\Contracts\Database\Eloquent\Castable;
 use SotkClient\Cast\Pendidikan\JurusanCasting;
 use SotkClient\Models\Model;
 
-class Jurusan Extends Model
+class Jurusan Extends Model implements Castable
 {
     /**
      * The attributes that should be cast.

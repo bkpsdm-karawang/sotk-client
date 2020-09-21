@@ -14,6 +14,9 @@
         "illuminate/support": "^8.5",
         "illuminate/database": "^8.5"
     },
+    "suggest": {
+        "laravel/framework": "^8.5"
+    },
     "license": "MIT",
     "minimum-stability": "stable",
     "autoload": {
@@ -33,7 +36,8 @@
                 "SotkClient\\Laravel\\SotkClientServiceProvider"
             ],
             "aliases": {
-                "Socialite": "SotkClient\\Laravel\\Facades\\SotkClient"
+                "SotkClient": "SotkClient\\Laravel\\Facades\\SotkClient",
+                "SotkClientRoute": "SotkClient\\Laravel\\Facades\\Route"
             }
         }
     }

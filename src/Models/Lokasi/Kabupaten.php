@@ -2,10 +2,11 @@
 
 namespace SotkClient\Models\Lokasi;
 
+use Illuminate\Contracts\Database\Eloquent\Castable;
 use SotkClient\Cast\Lokasi\KabupatenCasting;
 use SotkClient\Models\Model;
 
-class Kabupaten Extends Model
+class Kabupaten Extends Model implements Castable
 {
     /**
      * The attributes that should be cast.

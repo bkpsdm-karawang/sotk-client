@@ -2,12 +2,13 @@
 
 namespace SotkClient\Models\Pendidikan;
 
+use Illuminate\Contracts\Database\Eloquent\Castable;
 use SotkClient\Models\Lokasi\Provinsi;
 use SotkClient\Models\Lokasi\Kabupaten;
 use SotkClient\Cast\Pendidikan\PerguruanTinggiCasting;
 use SotkClient\Models\Model;
 
-class PerguruanTinggi Extends Model
+class PerguruanTinggi Extends Model implements Castable
 {
     /**
      * The attributes that should be cast.

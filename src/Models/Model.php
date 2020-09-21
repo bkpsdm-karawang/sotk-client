@@ -4,9 +4,8 @@ namespace SotkClient\Models;
 
 use BadMethodCallException;
 use Illuminate\Database\Eloquent\Model as BaseModel;
-use Illuminate\Contracts\Database\Eloquent\Castable;
 
-abstract class Model extends BaseModel implements Castable
+abstract class Model extends BaseModel
 {
     /**
      * Indicates if the model should be timestamped.

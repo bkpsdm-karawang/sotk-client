@@ -2,10 +2,11 @@
 
 namespace SotkClient\Models\Lokasi;
 
+use Illuminate\Contracts\Database\Eloquent\Castable;
 use SotkClient\Cast\Lokasi\DesaCasting;
 use SotkClient\Models\Model;
 
-class Desa Extends Model
+class Desa Extends Model implements Castable
 {
     /**
      * The attributes that should be cast.

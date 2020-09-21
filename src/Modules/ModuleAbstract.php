@@ -5,8 +5,6 @@ namespace SotkClient\Modules;
 use Exception;
 use GuzzleHttp\ClientInterface;
 use InvalidArgumentException;
-use Illuminate\Support\Collection;
-use SotkClient\Models\Model;
 use SotkClient\Response;
 
 abstract class ModuleAbstract implements ModuleContract
@@ -84,16 +82,21 @@ abstract class ModuleAbstract implements ModuleContract
      * get listing data.
      *
      * @param array $query
+     * @param bool $transform
      * @return \Illuminate\Support\Collection
      * @throws Exception
      */
-    public function getList(array $query = []) : Collection
+    public function getList(array $query = [], bool $transform = true)
     {
         try {
             $response = $this->client->get($this->endpoint, ['query' => $this->buildQuery($query)]);
 
             if ($response->getStatusCode() === 200) {
-                return $this->response->generateListing($response);
+                if  ($transform) {
+                    return $this->response->generateListing($response);
+                }
+
+                return $response;
             }
 
             throw new Exception('Server not response with status code 200');
@@ -106,15 +109,21 @@ abstract class ModuleAbstract implements ModuleContract
      * get detail data.
      *
      * @param mixed $identifier
+     * @param array $query
+     * @param bool $transform
      * @return \SotkClient\Models\Model
      */
-    public function getDetail($identifier) : Model
+    public function getDetail($identifier, array $query = [], bool $transform = true)
     {
         try {
-            $response = $this->client->get("{$this->endpoint}/{$identifier}", ['query' => $this->buildQuery()]);
+            $response = $this->client->get("{$this->endpoint}/{$identifier}", ['query' => $this->buildQuery($query)]);
 
             if ($response->getStatusCode() === 200) {
-                return $this->response->generateDetail($response);
+                if ($transform) {
+                    return $this->response->generateDetail($response);
+                }
+
+                return $response;
             }
 
             throw new Exception('Server not response with status code 200');

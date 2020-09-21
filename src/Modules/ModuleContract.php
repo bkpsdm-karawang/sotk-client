@@ -2,9 +2,6 @@
 
 namespace SotkClient\Modules;
 
-use Illuminate\Support\Collection;
-use SotkClient\Models\Model;
-
 interface ModuleContract
 {
     /**
@@ -13,7 +10,7 @@ interface ModuleContract
      * @param array $query
      * @return \Illuminate\Support\Collection
      */
-    public function getList(array $query = []) : Collection;
+    public function getList(array $query = [], bool $transform = true);
 
     /**
      * get detail data.
@@ -21,7 +18,7 @@ interface ModuleContract
      * @param mixed $identifier
      * @return \SotkClient\Models\Model
      */
-    public function getDetail($identifier) : Model;
+    public function getDetail($identifier, array $query = [], bool $transform = true);
 
     /**
      * proxy to client.
