@@ -4,6 +4,7 @@ namespace SotkClient\Modules;
 
 use Exception;
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\ClientException;
 use InvalidArgumentException;
 use SotkClient\Response;
 
@@ -88,21 +89,27 @@ abstract class ModuleAbstract implements ModuleContract
      */
     public function getList(array $query = [], bool $transform = true)
     {
+        $response = null;
+
         try {
             $response = $this->client->get($this->endpoint, ['query' => $this->buildQuery($query)]);
+        } catch (ClientException $error) {
+            $response = $error->getResponse();
+        }
 
+        if (! is_null($response)) {
             if ($response->getStatusCode() === 200) {
-                if  ($transform) {
+                if ($transform) {
                     return $this->response->generateListing($response);
                 }
-
-                return $response;
+            } else if ($transform) {
+                throw new Exception('Server SOTK not send status 200');
             }
 
-            throw new Exception('Server not response with status code 200');
-        } catch (Exception $error) {
-            throw new Exception($error->getMessage());
+            return $response;
         }
+
+        throw new Exception('Request has no response');
     }
 
     /**
@@ -115,21 +122,27 @@ abstract class ModuleAbstract implements ModuleContract
      */
     public function getDetail($identifier, array $query = [], bool $transform = true)
     {
+        $response = null;
+
         try {
             $response = $this->client->get("{$this->endpoint}/{$identifier}", ['query' => $this->buildQuery($query)]);
+        } catch (ClientException $error) {
+            $response = $error->getResponse();
+        }
 
+        if (! is_null($response)) {
             if ($response->getStatusCode() === 200) {
                 if ($transform) {
                     return $this->response->generateDetail($response);
                 }
-
-                return $response;
+            } else if ($transform) {
+                throw new Exception('Server SOTK not send status 200');
             }
 
-            throw new Exception('Server not response with status code 200');
-        } catch (Exception $error) {
-            throw new Exception($error->getMessage());
+            return $response;
         }
+
+        throw new Exception('Request has no response');
     }
 
     /**

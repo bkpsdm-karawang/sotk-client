@@ -27,13 +27,15 @@ class RouteRegistrar
     /**
      * Register routes for transient tokens, clients, and personal access tokens.
      *
+     * @param array $writable
      * @return void
      */
-    public function all()
+    public function all(array $writable = [])
     {
         $this->moduleBupati();
         $this->moduleLokasi();
         $this->modulePendidikan();
+        $this->moduleSkpd($writable['skpd'] ?: false);
     }
 
     /**
@@ -80,6 +82,24 @@ class RouteRegistrar
             $router->get('/jurusan/{id}', ['uses' => 'Pendidikan\JurusanController@getDetail', 'as' => 'sotk.pendidikan.jurusan.detail']);
             $router->get('/perguruan-tinggi', ['uses' => 'Pendidikan\PerguruanTinggiController@getList', 'as' => 'sotk.pendidikan.perguruan-tinggi.list']);
             $router->get('/perguruan-tinggi/{id}', ['uses' => 'Pendidikan\PerguruanTinggiController@getDetail', 'as' => 'sotk.pendidikan.perguruan-tinggi.detail']);
+        });
+    }
+
+    /**
+     * Register the routes for module skpd.
+     *
+     * @param bool $write
+     * @return void
+     */
+    public function moduleSkpd(bool $write = false)
+    {
+        $this->router->group(['prefix' => 'skpd'], function($router) {
+            $router->get('/unit-kerja', ['uses' => 'Skpd\UnitKerjaController@getList', 'as' => 'sotk.skpd.unit-kerja.list']);
+            $router->get('/unit-kerja/{id}', ['uses' => 'Skpd\UnitKerjaController@getDetail', 'as' => 'sotk.skpd.unit-kerja.detail']);
+            $router->get('/kantor-skpd', ['uses' => 'Skpd\KantorSkpdController@getList', 'as' => 'sotk.skpd.kantor-skpd.list']);
+            $router->get('/kantor-skpd/{id}', ['uses' => 'Skpd\KantorSkpdController@getDetail', 'as' => 'sotk.skpd.kantor-skpd.detail']);
+            $router->get('/', ['uses' => 'Skpd\SkpdController@getList', 'as' => 'sotk.skpd.list']);
+            $router->get('/{id}', ['uses' => 'Skpd\SkpdController@getDetail', 'as' => 'sotk.skpd.detail']);
         });
     }
 }

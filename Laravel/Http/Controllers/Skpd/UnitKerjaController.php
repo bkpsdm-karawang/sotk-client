@@ -1,11 +1,11 @@
 <?php
 
-namespace SotkClient\Laravel\Http\Controllers\Lokasi;
+namespace SotkClient\Laravel\Http\Controllers\Skpd;
 
 use SotkClient\Laravel\Facades\SotkClient;
 use SotkClient\Laravel\Http\Controllers\Controller;
 
-class KecamatanController extends Controller
+class UnitKerjaController extends Controller
 {
     /**
      * constructor
@@ -13,6 +13,6 @@ class KecamatanController extends Controller
      */
     public function __construct(SotkClient $manager)
     {
-        $this->client = $manager::module('lokasi-kecamatan');
+        $this->client = $manager::module('skpd-unit-kerja');
     }
 }

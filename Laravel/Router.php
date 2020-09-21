@@ -29,12 +29,18 @@ class Router
      *
      * @param  callable|null  $callback
      * @param  array  $options
+     * @param  array  $writable
      * @return void
      */
-    public static function routes($callback = null, array $options = [])
+    public static function routes($callback = null, array $options = [], $writable = [])
     {
-        $callback = $callback ?: function ($router) {
-            $router->all();
+        $writable = array_merge(
+            [ 'skpd' => false ],
+            $writable
+        );
+
+        $callback = $callback ?: function ($router) use ($writable) {
+            $router->all($writable);
         };
 
         $defaultOptions = [
