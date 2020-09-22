@@ -2,16 +2,16 @@
 
 namespace SotkClient;
 
-use Illuminate\Support\Collection;
 use GuzzleHttp\Psr7\Response as PsrResponse;
 use SotkClient\Models\Model;
+use Illuminate\Support\Collection;
 
 class Response
 {
     /**
      * model
      *
-     * @var Model
+     * @var string
      */
     protected $model;
 
@@ -32,10 +32,10 @@ class Response
     /**
      * constructor
      *
-     * @param Model $model
+     * @param string $model
      * @return void
      */
-    public function __construct(Model $model)
+    public function __construct($model)
     {
         $this->model = $model;
     }
@@ -50,8 +50,9 @@ class Response
     {
         $data = [];
 
-        foreach ($response = $this->getContentFromResponse($response) as $object) {
-            array_push($data, $this->model->replicate()->fill($object));
+        foreach ($this->getContentFromResponse($response) as $object) {
+            $this->setCasting($object);
+            array_push($data, new $this->model($object));
         }
 
         return new Collection($data);
@@ -63,19 +64,19 @@ class Response
      * @param \GuzzleHttp\Psr7\Response $response
      * @return \SotkClient\Models\Model
      */
-    public function generateDetail(PsrResponse $response) : Model
+    public function generateDetail(PsrResponse $response)
     {
         $data = $this->getContentFromResponse($response);
 
-        $this->model->fill($data);
+        $this->setCasting($data);
 
-        return $this->model;
+        return new $this->model($data);
     }
 
     /**
      * get content of response
      *
-     * @param \GuzzleHttp\Psr7\Response $response
+     * @param \p\Psr7\Response $response
      * @return array
      */
     protected function getContentFromResponse(PsrResponse $response) : array
@@ -89,5 +90,27 @@ class Response
         }
 
         return $data;
+    }
+
+    protected function setCasting(array &$data)
+    {
+        $casts = (new $this->model)->getCasts();
+
+        foreach ($casts as $key => $cast) {
+            $exploded = explode(':', $cast);
+            $class = $exploded[0];
+
+            if (class_exists($class) && array_key_exists($key, $data)) {
+                $model = $class::getModel();
+
+                if (!isset($exploded[1])) {
+                    $data[$key] = new $model($data[$key]);
+                } else if ($exploded[1] === 'children') {
+                    $data[$key] = new Collection(array_map(function($obj) use ($model) {
+                        return new $model($obj);
+                    }, $data[$key]));
+                }
+            }
+        }
     }
 }

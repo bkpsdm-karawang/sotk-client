@@ -2,33 +2,15 @@
 
 namespace SotkClient\Cast\Lokasi;
 
-use SotkClient\Models\Lokasi\Kabupaten as KabupatenModel;
 use SotkClient\Cast\BaseCasting;
-use Illuminate\Support\Collection;
+use SotkClient\Models\Lokasi\Kabupaten as KabupatenModel;
 
 class KabupatenCasting extends BaseCasting
 {
     /**
-     * Cast the given value.
+     * cast to model
      *
-     * @param  \Illuminate\Database\Eloquent\Model  $model
-     * @param  string  $key
-     * @param  mixed  $value
-     * @param  array  $attributes
-     * @return \App\Models\Address
+     * @var \Illuminate\Database\Eloquent\Model
      */
-    public function get($model, $key, $value, $attributes)
-    {
-        if ($this->isChildren) {
-            return new Collection(array_map(function($data) {
-                return new KabupatenModel($data);
-            }, $value ?: []));
-        }
-
-        if (! is_null($value)) {
-            return new KabupatenModel($value);
-        }
-
-        return null;
-    }
+    protected $model = KabupatenModel::class;
 }

@@ -2,36 +2,15 @@
 
 namespace SotkClient\Cast\Lokasi;
 
+use SotkClient\Cast\BaseCasting;
 use SotkClient\Models\Lokasi\Provinsi as ProvinsiModel;
-use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 
-class ProvinsiCasting implements CastsAttributes
+class ProvinsiCasting implements BaseCasting
 {
     /**
-     * Cast the given value.
+     * cast to model
      *
-     * @param  \Illuminate\Database\Eloquent\Model  $model
-     * @param  string  $key
-     * @param  mixed  $value
-     * @param  array  $attributes
-     * @return \App\Models\Address
+     * @var \Illuminate\Database\Eloquent\Model
      */
-    public function get($model, $key, $value, $attributes)
-    {
-        return new ProvinsiModel($value);
-    }
-
-    /**
-     * Prepare the given value for storage.
-     *
-     * @param  \Illuminate\Database\Eloquent\Model  $model
-     * @param  string  $key
-     * @param  \App\Models\Address  $value
-     * @param  array  $attributes
-     * @return array
-     */
-    public function set($model, $key, $value, $attributes)
-    {
-        return [$key => $value];
-    }
+    protected $model = ProvinsiModel::class;
 }

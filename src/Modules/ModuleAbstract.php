@@ -48,7 +48,7 @@ abstract class ModuleAbstract implements ModuleContract
     public function __construct(ClientInterface $client)
     {
         $this->client = $client;
-        $this->response = new Response(new $this->model());
+        $this->response = new Response($this->model);
     }
 
     /**
