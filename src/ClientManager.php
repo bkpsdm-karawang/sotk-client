@@ -6,6 +6,7 @@ use GuzzleHttp\ClientInterface;
 use Illuminate\Support\Manager;
 use InvalidArgumentException;
 use SotkClient\Modules\Bupati;
+use SotkClient\Registrar\Jabatan;
 use SotkClient\Registrar\Lokasi;
 use SotkClient\Registrar\Pendidikan;
 use SotkClient\Registrar\Skpd;
@@ -15,6 +16,7 @@ class ClientManager extends Manager
     use Lokasi;
     use Pendidikan;
     use Skpd;
+    use Jabatan;
 
     /**
      * guzzle client interface
