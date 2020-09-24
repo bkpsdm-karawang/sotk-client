@@ -54,17 +54,32 @@ abstract class BaseCasting implements CastsAttributes
      */
     public function get($model, $key, $value, $attributes)
     {
+        if (!isset($value)) {
+            return null;
+        }
+
         if ($this->isChildren) {
             return new Collection(array_map(function($data) {
-                return new $this->model($data);
+                return $this->createData($data);
             }, $value ? json_decode($value, true) : []));
         }
 
         if (! is_null($value)) {
-            return new $this->model(json_decode($value, true));
+            return $this->createData(json_decode($value, true));
         }
 
         return null;
+    }
+
+    /**
+     * create data
+     *
+     * @param array $data
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    protected function createData(array $data)
+    {
+        return new $this->model($data);
     }
 
     /**
@@ -78,6 +93,10 @@ abstract class BaseCasting implements CastsAttributes
      */
     public function set($model, $key, $value, $attributes)
     {
+        if (!isset($value)) {
+            return null;
+        }
+
         if ($this->isChildren) {
             if (! $value instanceof Collection) {
                 throw new InvalidArgumentException('The given value is not an instance of ' . Collection::class . '.');

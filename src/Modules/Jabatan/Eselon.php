@@ -20,17 +20,4 @@ class Eselon extends ModuleAbstract
      * @var \SotkClient\Models\Base
      */
     protected $model = \SotkClient\Models\Jabatan\Eselon::class;
-
-    /**
-     * get detail data.
-     *
-     * @param mixed $identifier
-     * @param array $query
-     * @param bool $transform
-     * @return \SotkClient\Models\Model
-     */
-    public function getDetail($identifier, array $query = [], bool $transform = true)
-    {
-        throw new BadMethodCallException('Not implemented');
-    }
 }

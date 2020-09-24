@@ -6,7 +6,7 @@ use Illuminate\Contracts\Database\Eloquent\Castable;
 use SotkClient\Cast\Jabatan\JabatanTugasTambahanCasting;
 use SotkClient\Models\Model;
 
-class JabatanTugasTambahan Extends Model implements Castable
+class JabatanTugasTambahan Extends Model implements Castable, ReferensiJabatanContract
 {
     /**
      * Get the name of the caster class to use when casting from / to this cast target.

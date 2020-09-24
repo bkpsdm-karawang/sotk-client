@@ -15,7 +15,7 @@ class UnitKerja Extends Model implements Castable
      */
     protected $casts = [
         'skpd' => Skpd::class,
-        'unit_kerja' => UnitKerja::class,
+        'parent' => UnitKerja::class,
         'sub_unit_kerja' => UnitKerja::class.':children',
     ];
 

@@ -5,6 +5,7 @@ namespace SotkClient;
 use GuzzleHttp\Psr7\Response as PsrResponse;
 use SotkClient\Models\Model;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 class Response
 {
@@ -97,17 +98,30 @@ class Response
         $casts = (new $this->model)->getCasts();
 
         foreach ($casts as $key => $cast) {
+            if (!isset($data[$key])) {
+                continue;
+            }
+
             $exploded = explode(':', $cast);
             $class = $exploded[0];
 
             if (class_exists($class) && array_key_exists($key, $data)) {
                 $model = $class::getModel();
+                $method = 'set'.Str::studly($key).'Casting';
 
                 if (!isset($exploded[1])) {
-                    $data[$key] = new $model($data[$key]);
+                    if (method_exists($class, $method)) {
+                        $data[$key] = call_user_func_array([$class, $method], [$data[$key]]);
+                    } else {
+                        $data[$key] = new $model($data[$key]);
+                    }
                 } else if ($exploded[1] === 'children') {
-                    $data[$key] = new Collection(array_map(function($obj) use ($model) {
-                        return new $model($obj);
+                    $data[$key] = new Collection(array_map(function($obj) use ($class, $method) {
+                        if (method_exists($class, $method)) {
+                            return call_user_func_array([$class, $method], [$obj]);
+                        } else {
+                            return new $model($obj);
+                        }
                     }, $data[$key]));
                 }
             }

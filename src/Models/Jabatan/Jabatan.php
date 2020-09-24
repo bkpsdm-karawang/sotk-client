@@ -4,6 +4,7 @@ namespace SotkClient\Models\Jabatan;
 
 use Illuminate\Contracts\Database\Eloquent\Castable;
 use SotkClient\Cast\Jabatan\JabatanCasting;
+use SotkClient\Cast\Jabatan\ReferensiJabatanCasting;
 use SotkClient\Models\Skpd\Skpd;
 use SotkClient\Models\Skpd\UnitKerja;
 use SotkClient\Models\Model;
@@ -18,6 +19,7 @@ class Jabatan Extends Model implements Castable
     protected $casts = [
         'skpd' => Skpd::class,
         'unit_kerja' => UnitKerja::class,
+        'referensi' => ReferensiJabatanCasting::class,
     ];
 
     /**
