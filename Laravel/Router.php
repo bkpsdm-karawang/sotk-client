@@ -35,7 +35,7 @@ class Router
     public static function routes($callback = null, array $options = [], $writable = [])
     {
         $writable = array_merge(
-            [ 'skpd' => false ],
+            ['jabatan' => false],
             $writable
         );
 

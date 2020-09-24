@@ -10,6 +10,9 @@ use SotkClient\Modules\Jabatan\JabatanPelaksana;
 use SotkClient\Modules\Jabatan\JabatanPolitik;
 use SotkClient\Modules\Jabatan\JabatanStruktural;
 use SotkClient\Modules\Jabatan\JabatanTugasTambahan;
+use SotkClient\Modules\Jabatan\JabatanFungsionalJenis;
+use SotkClient\Modules\Jabatan\JabatanPelaksanaJenis;
+use SotkClient\Modules\Jabatan\Kelas;
 
 trait Jabatan
 {
@@ -91,5 +94,35 @@ trait Jabatan
     protected function createJabatanTugasTambahanDriver()
     {
         return new JabatanTugasTambahan($this->client);
+    }
+
+    /**
+     * Create an instance of the specified driver.
+     *
+     * @return \SotkClient\Modules\AbstractModule
+     */
+    protected function createJabatanFungsionalJenisDriver()
+    {
+        return new JabatanFungsionalJenis($this->client);
+    }
+
+    /**
+     * Create an instance of the specified driver.
+     *
+     * @return \SotkClient\Modules\AbstractModule
+     */
+    protected function createJabatanPelaksanaJenisDriver()
+    {
+        return new JabatanPelaksanaJenis($this->client);
+    }
+
+    /**
+     * Create an instance of the specified driver.
+     *
+     * @return \SotkClient\Modules\AbstractModule
+     */
+    protected function createJabatanKelasDriver()
+    {
+        return new Kelas($this->client);
     }
 }
