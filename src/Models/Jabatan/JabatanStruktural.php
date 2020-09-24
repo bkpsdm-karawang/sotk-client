@@ -9,6 +9,15 @@ use SotkClient\Models\Model;
 class JabatanStruktural Extends Model implements Castable, ReferensiJabatanContract
 {
     /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'eselon' => Eselon::class
+    ];
+
+    /**
      * Get the name of the caster class to use when casting from / to this cast target.
      *
      * @param  array  $arguments
