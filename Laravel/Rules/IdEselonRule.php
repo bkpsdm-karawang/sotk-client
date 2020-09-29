@@ -1,21 +1,12 @@
 <?php
 
-namespace SotkClient\Rules;
+namespace SotkClient\Laravel\Rules;
 
+use SotkClient\Laravel\Facades\SotkClient;
 use Illuminate\Contracts\Validation\Rule;
 
-class SotkSkpdRule implements Rule
+class IdEselonRule implements Rule
 {
-    /**
-     * Create a new rule instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
     /**
      * Determine if the validation rule passes.
      *
@@ -25,7 +16,12 @@ class SotkSkpdRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        //
+        try {
+            SotkClient::module('jabatan-eselon')->getDetail($value);
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 
     /**
@@ -35,6 +31,6 @@ class SotkSkpdRule implements Rule
      */
     public function message()
     {
-        return 'The validation error message.';
+        return 'The :attribute is not valid Id Eselon';
     }
 }

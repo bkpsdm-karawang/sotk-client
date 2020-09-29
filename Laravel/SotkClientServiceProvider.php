@@ -3,9 +3,15 @@
 namespace SotkClient\Laravel;
 
 use GuzzleHttp\Client;
+use SotkClient\Laravel\Rules\IdEselonRule;
+use SotkClient\Laravel\Rules\IdGolonganRule;
+use SotkClient\Laravel\Rules\IdJabatanRule;
+use SotkClient\Laravel\Rules\IdSkpdRule;
+use SotkClient\Laravel\Rules\IdUnitKerjaRule;
 use Illuminate\Config\Repository as Config;
 use Illuminate\Support\ServiceProvider;
 use SotkClient\ClientManager;
+use Illuminate\Support\Facades\Validator;
 
 class SotkClientServiceProvider extends ServiceProvider
 {
@@ -21,6 +27,41 @@ class SotkClientServiceProvider extends ServiceProvider
                 __DIR__.'/config.php' => config_path('sotk.php'),
             ], 'sotk-config');
         }
+
+        $this->registerCustomValidator();
+    }
+
+    /**
+     * register all custom validation
+     *
+     * @return void
+     */
+    protected function registerCustomValidator()
+    {
+        $idSkpd = new IdSkpdRule();
+        Validator::extend('id_skpd', function ($attribute, $value) use ($idSkpd) {
+            return $idSkpd->passes($attribute, $value);
+        }, $idSkpd->message());
+
+        $idUnitKerja = new IdUnitKerjaRule();
+        Validator::extend('id_unit_kerja', function ($attribute, $value) use ($idUnitKerja) {
+            return $idUnitKerja->passes($attribute, $value);
+        }, $idUnitKerja->message());
+
+        $idJabatan = new IdJabatanRule();
+        Validator::extend('id_jabatan', function ($attribute, $value) use ($idJabatan) {
+            return $idJabatan->passes($attribute, $value);
+        }, $idJabatan->message());
+
+        $idGolongan = new IdGolonganRule();
+        Validator::extend('id_golongan', function ($attribute, $value) use ($idGolongan) {
+            return $idGolongan->passes($attribute, $value);
+        }, $idGolongan->message());
+
+        $idEselon = new IdEselonRule();
+        Validator::extend('id_eselon', function ($attribute, $value) use ($idEselon) {
+            return $idEselon->passes($attribute, $value);
+        }, $idEselon->message());
     }
 
     /**

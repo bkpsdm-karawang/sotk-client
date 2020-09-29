@@ -87,34 +87,16 @@ abstract class BaseCasting implements CastsAttributes
      *
      * @param  \Illuminate\Database\Eloquent\Model  $model
      * @param  string  $key
-     * @param  \App\Models\Address  $value
+     * @param  mixed  $value
      * @param  array  $attributes
      * @return array
      */
     public function set($model, $key, $value, $attributes)
     {
-        if (!isset($value)) {
-            return null;
+        if (isset($value)) {
+            return json_encode($value);
         }
 
-        if ($this->isChildren) {
-            if (! $value instanceof Collection) {
-                throw new InvalidArgumentException('The given value is not an instance of ' . Collection::class . '.');
-            }
-
-            foreach ($value as $item) {
-                if (! $item instanceof $this->model) {
-                    throw new InvalidArgumentException("All items must be instance of {$this->model}.");
-                }
-            }
-
-            return json_encode($value->toArray());
-        }
-
-        if (! $value instanceof $this->model) {
-            throw new InvalidArgumentException("The given value is not an instance of {$this->model}.");
-        }
-
-        return json_encode($value->toArray());
+        return null;
     }
 }

@@ -136,7 +136,6 @@ abstract class ModuleAbstract implements ModuleContract
                     return $this->response->generateDetail($response);
                 }
             } else if ($transform) {
-                dd($error);
                 throw new Exception('Server SOTK not send status 200');
             }
 
