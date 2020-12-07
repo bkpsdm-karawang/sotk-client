@@ -32,22 +32,10 @@ class RouteRegistrar
      */
     public function all(array $writable = [])
     {
-        $this->moduleBupati();
         $this->moduleLokasi();
         $this->modulePendidikan();
         $this->moduleSkpd();
         $this->moduleJabatan($writable['jabatan'] ?: false);
-    }
-
-    /**
-     * Register the routes for module bupati.
-     *
-     * @return void
-     */
-    public function moduleBupati()
-    {
-        $this->router->get('/bupati', ['uses' => 'BupatiController@getList', 'as' => 'sotk.bupati.list']);
-        $this->router->get('/bupati/{id}', ['uses' => 'BupatiController@getDetail', 'as' => 'sotk.bupati.detail']);
     }
 
     /**

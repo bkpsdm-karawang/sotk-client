@@ -5,7 +5,6 @@ namespace SotkClient;
 use GuzzleHttp\ClientInterface;
 use Illuminate\Support\Manager;
 use InvalidArgumentException;
-use SotkClient\Modules\Bupati;
 use SotkClient\Registrar\Jabatan;
 use SotkClient\Registrar\Lokasi;
 use SotkClient\Registrar\Pendidikan;
@@ -46,16 +45,6 @@ class ClientManager extends Manager
     public function module(string $name)
     {
         return $this->driver($name);
-    }
-
-    /**
-     * Create an instance of the specified driver.
-     *
-     * @return \SotkClient\Modules\AbstractModule
-     */
-    protected function createBupatiDriver()
-    {
-        return new Bupati($this->client);
     }
 
     /**

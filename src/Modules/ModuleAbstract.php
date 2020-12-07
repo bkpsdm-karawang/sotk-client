@@ -7,6 +7,7 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
 use InvalidArgumentException;
 use SotkClient\Response;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 abstract class ModuleAbstract implements ModuleContract
 {
@@ -103,7 +104,11 @@ abstract class ModuleAbstract implements ModuleContract
                     return $this->response->generateListing($response);
                 }
             } else if ($transform) {
-                throw new Exception('Server SOTK not send status 200');
+                $body = $response->getBody();
+                $content = $body->getContents();
+                $data = json_decode($content, true);
+                $message = $data['message'] ?? '';
+                throw new HttpException($response->getStatusCode(), 'Error SOTK : '.$message);
             }
 
             return $response;

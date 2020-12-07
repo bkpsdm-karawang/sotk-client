@@ -2,7 +2,6 @@
 
 namespace SotkClient\Modules\Jabatan;
 
-use BadMethodCallException;
 use SotkClient\Modules\ModuleAbstract;
 
 class Golongan extends ModuleAbstract
