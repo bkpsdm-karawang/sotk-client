@@ -5,7 +5,7 @@ namespace SotkClient\Cast\Lokasi;
 use SotkClient\Cast\BaseCasting;
 use SotkClient\Models\Lokasi\Provinsi as ProvinsiModel;
 
-class ProvinsiCasting implements BaseCasting
+class ProvinsiCasting extends BaseCasting
 {
     /**
      * cast to model

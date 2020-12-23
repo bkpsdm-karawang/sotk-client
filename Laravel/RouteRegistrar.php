@@ -65,10 +65,16 @@ class RouteRegistrar
     public function modulePendidikan()
     {
         $this->router->group(['prefix' => 'pendidikan'], function ($router) {
-            $router->get('/jenjang', ['uses' => 'Pendidikan\JenjangController@getList', 'as' => 'sotk.pendidikan.jenjang.list']);
-            $router->get('/jenjang/{id}', ['uses' => 'Pendidikan\JenjangController@getDetail', 'as' => 'sotk.pendidikan.jenjang.detail']);
+            $router->get('/tingkat', ['uses' => 'Pendidikan\TingkatController@getList', 'as' => 'sotk.pendidikan.tingkat.list']);
+            $router->get('/tingkat/{id}', ['uses' => 'Pendidikan\TingkatController@getDetail', 'as' => 'sotk.pendidikan.tingkat.detail']);
+            $router->get('/satuan', ['uses' => 'Pendidikan\SatuanController@getList', 'as' => 'sotk.pendidikan.satuan.list']);
+            $router->get('/satuan/{id}', ['uses' => 'Pendidikan\SatuanController@getDetail', 'as' => 'sotk.pendidikan.satuan.detail']);
             $router->get('/jurusan', ['uses' => 'Pendidikan\JurusanController@getList', 'as' => 'sotk.pendidikan.jurusan.list']);
             $router->get('/jurusan/{id}', ['uses' => 'Pendidikan\JurusanController@getDetail', 'as' => 'sotk.pendidikan.jurusan.detail']);
+            $router->get('/lembaga', ['uses' => 'Pendidikan\LembagaController@getList', 'as' => 'sotk.pendidikan.lembaga.list']);
+            $router->get('/lembaga/{id}', ['uses' => 'Pendidikan\LembagaController@getDetail', 'as' => 'sotk.pendidikan.lembaga.detail']);
+            $router->get('/sekolah', ['uses' => 'Pendidikan\SekolahController@getList', 'as' => 'sotk.pendidikan.sekolah.list']);
+            $router->get('/sekolah/{id}', ['uses' => 'Pendidikan\SekolahController@getDetail', 'as' => 'sotk.pendidikan.sekolah.detail']);
             $router->get('/perguruan-tinggi', ['uses' => 'Pendidikan\PerguruanTinggiController@getList', 'as' => 'sotk.pendidikan.perguruan-tinggi.list']);
             $router->get('/perguruan-tinggi/{id}', ['uses' => 'Pendidikan\PerguruanTinggiController@getDetail', 'as' => 'sotk.pendidikan.perguruan-tinggi.detail']);
         });

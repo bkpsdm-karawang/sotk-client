@@ -2,7 +2,6 @@
 
 namespace SotkClient\Cast;
 
-use InvalidArgumentException;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Support\Collection;
 

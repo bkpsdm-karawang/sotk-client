@@ -5,7 +5,7 @@ namespace SotkClient\Laravel\Http\Controllers\Pendidikan;
 use SotkClient\Laravel\Facades\SotkClient;
 use SotkClient\Laravel\Http\Controllers\Controller;
 
-class JenjangController extends Controller
+class TingkatController extends Controller
 {
     /**
      * constructor
@@ -13,6 +13,6 @@ class JenjangController extends Controller
      */
     public function __construct(SotkClient $manager)
     {
-        $this->client = $manager::module('pendidikan-jenjang');
+        $this->client = $manager::module('pendidikan-tingkat');
     }
 }

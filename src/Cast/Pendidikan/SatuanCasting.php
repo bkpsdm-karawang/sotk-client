@@ -3,14 +3,14 @@
 namespace SotkClient\Cast\Pendidikan;
 
 use SotkClient\Cast\BaseCasting;
-use SotkClient\Models\Pendidikan\Jenjang as JenjangModel;
+use SotkClient\Models\Pendidikan\Satuan as SatuanModel;
 
-class JenjangCasting extends BaseCasting
+class SatuanCasting extends BaseCasting
 {
     /**
      * cast to model
      *
      * @var \Illuminate\Database\Eloquent\Model
      */
-    protected $model = JenjangModel::class;
+    protected $model = SatuanModel::class;
 }

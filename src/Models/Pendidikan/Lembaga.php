@@ -3,20 +3,11 @@
 namespace SotkClient\Models\Pendidikan;
 
 use Illuminate\Contracts\Database\Eloquent\Castable;
-use SotkClient\Cast\Pendidikan\JurusanCasting;
+use SotkClient\Cast\Pendidikan\LembagaCasting;
 use SotkClient\Models\Model;
 
-class Jurusan Extends Model implements Castable
+class Lembaga Extends Model implements Castable
 {
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'tingkat' => Tingkat::class.':children',
-    ];
-
     /**
      * Get the name of the caster class to use when casting from / to this cast target.
      *
@@ -26,6 +17,6 @@ class Jurusan Extends Model implements Castable
      */
     public static function castUsing(array $arguments)
     {
-        return JurusanCasting::class;
+        return LembagaCasting::class;
     }
 }

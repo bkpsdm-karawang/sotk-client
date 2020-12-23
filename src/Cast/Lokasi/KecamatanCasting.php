@@ -5,7 +5,7 @@ namespace SotkClient\Cast\Lokasi;
 use SotkClient\Cast\BaseCasting;
 use SotkClient\Models\Lokasi\Kecamatan as KecamatanModel;
 
-class KecamatanCasting implements BaseCasting
+class KecamatanCasting extends BaseCasting
 {
     /**
      * cast to model
