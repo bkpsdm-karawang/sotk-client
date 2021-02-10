@@ -3,23 +3,10 @@
 namespace SotkClient\Models\Pendidikan;
 
 use Illuminate\Contracts\Database\Eloquent\Castable;
-use SotkClient\Models\Lokasi\Provinsi;
-use SotkClient\Models\Lokasi\Kabupaten;
 use SotkClient\Cast\Pendidikan\PerguruanTinggiCasting;
-use SotkClient\Models\Model;
 
-class PerguruanTinggi Extends Model implements Castable
+class PerguruanTinggi Extends InstansiPendidikan implements Castable
 {
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'provinisi' => Provinsi::class,
-        'kabupaten' => Kabupaten::class,
-    ];
-
     /**
      * Get the name of the caster class to use when casting from / to this cast target.
      *

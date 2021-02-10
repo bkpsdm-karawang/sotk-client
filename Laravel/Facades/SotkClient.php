@@ -5,7 +5,7 @@ namespace SotkClient\Laravel\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static \SotkClient\Client module(string $module)
+ * @method static \SotkClient\Modules\ModuleContract module(string $module)
  * @see \SotkClient\Client
  */
 class SotkClient extends Facade
