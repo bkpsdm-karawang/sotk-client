@@ -57,7 +57,7 @@ abstract class ModuleAbstract implements ModuleContract
      * @param string $relation
      * @return ModuleAbstract
      */
-    public function with(string $relation)
+    public function with(string $relation): ModuleContract
     {
         if (isset($this->query['with'])) {
             $this->query['with'] .= ','.$relation;

@@ -12,7 +12,8 @@
         "php": "^7.3",
         "guzzlehttp/guzzle": "^7.0",
         "illuminate/support": "^8.5",
-        "illuminate/database": "^8.5"
+        "illuminate/database": "^8.5",
+        "illuminate/validation": "^8.5"
     },
     "suggest": {
         "laravel/framework": "^8.5"

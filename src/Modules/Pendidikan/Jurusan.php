@@ -3,9 +3,13 @@
 namespace SotkClient\Modules\Pendidikan;
 
 use SotkClient\Modules\ModuleAbstract;
+use SotkClient\Modules\ModuleWriteContract;
+use SotkClient\Modules\WriteTrait;
 
-class Jurusan extends ModuleAbstract
+class Jurusan extends ModuleAbstract implements ModuleWriteContract
 {
+    use WriteTrait;
+
     /**
      * base endpoint of module
      *

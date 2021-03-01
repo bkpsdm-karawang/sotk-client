@@ -14,7 +14,7 @@ trait Pendidikan
     /**
      * Create an instance of the specified driver.
      *
-     * @return \SotkClient\Modules\AbstractModule
+     * @return \SotkClient\Modules\ModuleAbstract
      */
     protected function createPendidikanTingkatDriver()
     {
@@ -24,7 +24,7 @@ trait Pendidikan
     /**
      * Create an instance of the specified driver.
      *
-     * @return \SotkClient\Modules\AbstractModule
+     * @return \SotkClient\Modules\ModuleAbstract
      */
     protected function createPendidikanSatuanDriver()
     {
@@ -34,7 +34,7 @@ trait Pendidikan
     /**
      * Create an instance of the specified driver.
      *
-     * @return \SotkClient\Modules\AbstractModule
+     * @return \SotkClient\Modules\ModuleAbstract
      */
     protected function createPendidikanLembagaDriver()
     {
@@ -44,7 +44,7 @@ trait Pendidikan
     /**
      * Create an instance of the specified driver.
      *
-     * @return \SotkClient\Modules\AbstractModule
+     * @return \SotkClient\Modules\ModuleWriteContract
      */
     protected function createPendidikanJurusanDriver()
     {
@@ -54,7 +54,7 @@ trait Pendidikan
     /**
      * Create an instance of the specified driver.
      *
-     * @return \SotkClient\Modules\AbstractModule
+     * @return \SotkClient\Modules\ModuleWriteContract
      */
     protected function createPendidikanSekolahDriver()
     {
@@ -64,7 +64,7 @@ trait Pendidikan
     /**
      * Create an instance of the specified driver.
      *
-     * @return \SotkClient\Modules\AbstractModule
+     * @return \SotkClient\Modules\ModuleWriteContract
      */
     protected function createPendidikanPerguruanTinggiDriver()
     {

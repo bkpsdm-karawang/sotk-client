@@ -5,6 +5,13 @@ namespace SotkClient\Modules;
 interface ModuleContract
 {
     /**
+     * with query string
+     * @param string $relation
+     * @return ModuleAbstract
+     */
+    public function with(string $relation) : ModuleContract;
+
+    /**
      * get listing data.
      *
      * @param array $query
@@ -19,12 +26,4 @@ interface ModuleContract
      * @return \SotkClient\Models\Model
      */
     public function getDetail($identifier, array $query = [], bool $transform = true);
-
-    /**
-     * proxy to client.
-     *
-     * @param array $arguments
-     * @return ReponseContract
-     */
-    public function __call($name, array $arguments);
 }
