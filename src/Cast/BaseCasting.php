@@ -63,8 +63,10 @@ abstract class BaseCasting implements CastsAttributes
             }, $value ? json_decode($value, true) : []));
         }
 
-        if (! is_null($value)) {
-            return $this->createData(json_decode($value, true));
+        $data = json_decode($value, true);
+
+        if (! is_null($data)) {
+            return $this->createData($data);
         }
 
         return null;
