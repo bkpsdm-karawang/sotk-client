@@ -2,7 +2,7 @@
 
 namespace SotkClient;
 
-use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Client;
 use Illuminate\Support\Manager;
 use InvalidArgumentException;
 use SotkClient\Registrar\Jabatan;
@@ -18,11 +18,11 @@ class ClientManager extends Manager
     use Jabatan;
 
     /**
-     * guzzle client interface
+     * guzzle http client
      *
-     * @var ClientInterface
+     * @var \GuzzleHttp\Client
      */
-    protected $client;
+    public $client;
 
     /**
      * constructor
@@ -31,7 +31,7 @@ class ClientManager extends Manager
      *
      * @return void
      */
-    public function __construct(ClientInterface $client)
+    public function __construct(Client $client)
     {
         $this->client = $client;
     }

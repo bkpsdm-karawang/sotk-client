@@ -2,6 +2,9 @@
 
 namespace SotkClient\Modules;
 
+/**
+ * @property \GuzzleHttp\Client $client
+ */
 interface ModuleContract
 {
     /**

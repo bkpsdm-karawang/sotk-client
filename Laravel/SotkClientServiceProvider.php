@@ -89,7 +89,7 @@ class SotkClientServiceProvider extends ServiceProvider
      * @param array $config
      * @return \GuzzleHttp\Client
      */
-    protected function createGuzzleClient(array $config)
+    protected function createGuzzleClient(array $config): Client
     {
         return new Client([
             'verify' => false,

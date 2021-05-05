@@ -3,7 +3,7 @@
 namespace SotkClient\Modules;
 
 use Exception;
-use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use InvalidArgumentException;
 use SotkClient\Response;
@@ -11,6 +11,13 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 
 abstract class ModuleAbstract implements ModuleContract
 {
+    /**
+     * http client
+     *
+     * @var \GuzzleHttp\Client
+     */
+    public $client;
+
     /**
      * base endpoint of module
      *
@@ -42,11 +49,11 @@ abstract class ModuleAbstract implements ModuleContract
     /**
      * constructor
      *
-     * @param ClientInterface $client
+     * @param Client $client
      *
      * @return void
      */
-    public function __construct(ClientInterface $client)
+    public function __construct(Client $client)
     {
         $this->client = $client;
         $this->response = new Response($this->model);
