@@ -4,6 +4,7 @@ namespace SotkClient\Cast;
 
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Support\Collection;
+use SotkClient\Models\Model;
 
 abstract class BaseCasting implements CastsAttributes
 {
@@ -22,6 +23,13 @@ abstract class BaseCasting implements CastsAttributes
     protected $isChildren = false;
 
     /**
+     * allowed field to set
+     *
+     * @var array
+     */
+    protected $fields = [];
+
+    /**
      * Create a new cast class instance.
      *
      * @param  string|null  $param
@@ -30,6 +38,16 @@ abstract class BaseCasting implements CastsAttributes
     public function __construct(...$params)
     {
         $this->isChildren = in_array('children', $params);
+    }
+
+    /**
+     * get allowed fields
+     *
+     * @return array
+     */
+    public function getFields()
+    {
+        return $this->fields;
     }
 
     /**
@@ -94,10 +112,22 @@ abstract class BaseCasting implements CastsAttributes
      */
     public function set($model, $key, $value, $attributes)
     {
-        if (isset($value)) {
-            return json_encode($value);
+        if (!isset($value) || empty($value) || is_null($value)) {
+            return null;
         }
 
-        return null;
+        if (is_array($this->fields) && count($this->fields) > 0) {
+            if ($value instanceof Model) {
+                $data = $value->only($this->fields);
+                return json_encode($data);
+            }
+
+            if (is_array($value)) {
+                $data = array_intersect_key($value, array_flip($this->fields));
+                return json_encode($data);
+            }
+        }
+
+        return json_encode($value);
     }
 }

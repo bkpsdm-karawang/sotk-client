@@ -13,4 +13,14 @@ class UnitKerjaCasting extends BaseCasting
      * @var \Illuminate\Database\Eloquent\Model
      */
     protected $model = UnitKerjaModel::class;
+
+    /**
+     * allowed field to set
+     *
+     * @var array
+     */
+    protected $fields = [
+        'id', 'urutan', 'nama', 'nama_lengkap', 'singkatan',
+        'jenis', 'id_skpd', 'id_parent'
+    ];
 }

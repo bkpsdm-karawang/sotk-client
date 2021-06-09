@@ -4,6 +4,7 @@ namespace SotkClient\Cast\Jabatan;
 
 use InvalidArgumentException;
 use SotkClient\Cast\BaseCasting;
+use SotkClient\Models\Model;
 use SotkClient\Models\Jabatan\JabatanFungsional;
 use SotkClient\Models\Jabatan\JabatanPelaksana;
 use SotkClient\Models\Jabatan\JabatanPolitik;
@@ -47,16 +48,5 @@ class ReferensiJabatanCasting extends BaseCasting
         }
 
         throw new InvalidArgumentException("{$data['jenis']} not valid jenis jabaan");
-    }
-
-    /**
-     * custom method casting
-     *
-     * @param array $data
-     * @return \Illuminate\Database\Eloquent\Model
-     */
-    public static function setReferensiCasting ($data)
-    {
-        return (new static)->createData($data);
     }
 }

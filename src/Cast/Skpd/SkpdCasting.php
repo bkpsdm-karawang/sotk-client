@@ -13,4 +13,14 @@ class SkpdCasting extends BaseCasting
      * @var \Illuminate\Database\Eloquent\Model
      */
     protected $model = SkpdModel::class;
+
+    /**
+     * allowed field to set
+     *
+     * @var array
+     */
+    protected $fields = [
+        'id', 'urutan', 'nama', 'singkatan',
+        'logo', 'jenis', 'jenis_instansi'
+    ];
 }
