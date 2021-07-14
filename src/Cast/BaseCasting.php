@@ -116,7 +116,7 @@ abstract class BaseCasting implements CastsAttributes
             return null;
         }
 
-        if (is_array($this->fields) && count($this->fields) > 0) {
+        if (!$this->isChildren && is_array($this->fields) && count($this->fields) > 0) {
             if ($value instanceof Model) {
                 $data = $value->only($this->fields);
                 return json_encode($data);
