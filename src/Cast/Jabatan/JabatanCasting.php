@@ -23,6 +23,6 @@ class JabatanCasting extends BaseCasting
         'id', 'nama', 'jenis', 'urutan', 'formasi', 'id_skpd', 'jenjang',
         'singkatan', 'spesifikasi', 'id_referensi', 'spesialisasi', 'referensi',
         'nama_lengkap', 'id_unit_kerja', 'id_jabatan_atasan', 'is_jabatan_kepala',
-        'id_jabatan_fungsional_spesialisasi'
+        'id_jabatan_fungsional_spesialisasi', 'bup'
     ];
 }
