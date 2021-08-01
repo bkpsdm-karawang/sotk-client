@@ -26,26 +26,39 @@ class RouteRegistrar
 
     /**
      * Register routes for transient tokens, clients, and personal access tokens.
-     *
-     * @param array $writable
      * @return void
      */
-    public function all(array $writable = [])
+    public function all()
     {
         $this->moduleLokasi();
         $this->modulePendidikan();
         $this->moduleSkpd();
-        $this->moduleJabatan($writable['jabatan'] ?: false);
+        $this->moduleJabatan();
+    }
+
+    /**
+     * create group route
+     */
+    protected function createGroup($prefix, $middleware = null): array
+    {
+        $group = ['prefix' => $prefix];
+
+        if (!is_null($middleware)) {
+            $group['middleware'] = $middleware;
+        }
+
+        return $group;
     }
 
     /**
      * Register the routes for module lokasi.
      *
+     * @param mixed $middleware string|array
      * @return void
      */
-    public function moduleLokasi()
+    public function moduleLokasi($middleware = null)
     {
-        $this->router->group(['prefix' => 'lokasi'], function ($router) {
+        $this->router->group($this->createGroup('lokasi', $middleware), function ($router) {
             $router->get('/provinsi', ['uses' => 'Lokasi\ProvinsiController@getList', 'as' => 'sotk.lokasi.provinsi.list']);
             $router->get('/provinsi/{id}', ['uses' => 'Lokasi\ProvinsiController@getDetail', 'as' => 'sotk.lokasi.provinsi.detail']);
             $router->get('/kabupaten', ['uses' => 'Lokasi\KabupatenController@getList', 'as' => 'sotk.lokasi.kabupaten.list']);
@@ -60,11 +73,12 @@ class RouteRegistrar
     /**
      * Register the routes for module pendidikan.
      *
+     * @param mixed $middleware string|array
      * @return void
      */
-    public function modulePendidikan()
+    public function modulePendidikan($middleware = null)
     {
-        $this->router->group(['prefix' => 'pendidikan'], function ($router) {
+        $this->router->group($this->createGroup('pendidikan', $middleware), function ($router) {
             $router->get('/tingkat', ['uses' => 'Pendidikan\TingkatController@getList', 'as' => 'sotk.pendidikan.tingkat.list']);
             $router->get('/tingkat/{id}', ['uses' => 'Pendidikan\TingkatController@getDetail', 'as' => 'sotk.pendidikan.tingkat.detail']);
             $router->get('/satuan', ['uses' => 'Pendidikan\SatuanController@getList', 'as' => 'sotk.pendidikan.satuan.list']);
@@ -83,11 +97,12 @@ class RouteRegistrar
     /**
      * Register the routes for module skpd.
      *
+     * @param mixed $middleware string|array
      * @return void
      */
-    public function moduleSkpd()
+    public function moduleSkpd($middleware = null)
     {
-        $this->router->group(['prefix' => 'skpd'], function ($router) {
+        $this->router->group($this->createGroup('skpd', $middleware), function ($router) {
             $router->get('/unit-kerja', ['uses' => 'Skpd\UnitKerjaController@getList', 'as' => 'sotk.skpd.unit-kerja.list']);
             $router->get('/unit-kerja/{id}', ['uses' => 'Skpd\UnitKerjaController@getDetail', 'as' => 'sotk.skpd.unit-kerja.detail']);
             $router->get('/kantor-skpd', ['uses' => 'Skpd\KantorSkpdController@getList', 'as' => 'sotk.skpd.kantor-skpd.list']);
@@ -99,16 +114,14 @@ class RouteRegistrar
     /**
      * Register the routes for module jabatan.
      *
-     * @param bool $write
+     * @param mixed $middleware string|array
      * @return void
      */
-    public function moduleJabatan(bool $write = false)
+    public function moduleJabatan($middleware = null)
     {
-        $this->router->group(['prefix' => 'jabatan'], function ($router) {
-
+        $this->router->group($this->createGroup('jabatan', $middleware), function ($router) {
             $router->get('/politik', ['uses' => 'Jabatan\JabatanPolitikController@getList', 'as' => 'sotk.jabatan.politik.list']);
             $router->get('/politik/{id}', ['uses' => 'Jabatan\JabatanPolitikController@getDetail', 'as' => 'sotk.jabatan.politik.detail']);
-
             $router->get('/struktural', ['uses' => 'Jabatan\JabatanStrukturalController@getList', 'as' => 'sotk.jabatan.struktural.list']);
             $router->get('/struktural/{id}', ['uses' => 'Jabatan\JabatanStrukturalController@getDetail', 'as' => 'sotk.jabatan.struktural.detail']);
 

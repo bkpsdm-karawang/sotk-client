@@ -32,15 +32,10 @@ class Router
      * @param  array  $writable
      * @return void
      */
-    public static function routes($callback = null, array $options = [], $writable = [])
+    public static function routes($callback = null, array $options = [])
     {
-        $writable = array_merge(
-            ['jabatan' => false],
-            $writable
-        );
-
-        $callback = $callback ?: function ($router) use ($writable) {
-            $router->all($writable);
+        $callback = $callback ?: function ($router) {
+            $router->all();
         };
 
         $defaultOptions = [
