@@ -5,6 +5,7 @@ namespace SotkClient\Laravel\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
+ * @method static \GuzzleHttp\Client client()
  * @method static \SotkClient\Modules\ModuleWriteContract module(string $module)
  * @see \SotkClient\Client
  */

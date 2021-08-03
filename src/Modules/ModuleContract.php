@@ -12,13 +12,20 @@ interface ModuleContract
      * @param string $relation
      * @return ModuleAbstract
      */
+    public function setEndpoint(string $endpoint) : ModuleContract;
+
+    /**
+     * with query string
+     * @param string $relation
+     * @return ModuleAbstract
+     */
     public function with(string $relation) : ModuleContract;
 
     /**
      * get listing data.
      *
      * @param array $query
-     * @return \Illuminate\Support\Collection
+     * @return mixed
      */
     public function getList(array $query = [], bool $transform = true);
 
@@ -26,7 +33,7 @@ interface ModuleContract
      * get detail data.
      *
      * @param mixed $identifier
-     * @return \SotkClient\Models\Model
+     * @return mixed
      */
     public function getDetail($identifier, array $query = [], bool $transform = true);
 }

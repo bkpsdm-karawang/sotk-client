@@ -42,6 +42,17 @@ class ClientManager extends Manager
      * @param string $name
      * @return \SotkClient\Modules\ModuleContract
      */
+    public function client(): Client
+    {
+        return $this->client;
+    }
+
+    /**
+     * ceate module
+     *
+     * @param string $name
+     * @return \SotkClient\Modules\ModuleContract
+     */
     public function module(string $name)
     {
         return $this->driver($name);

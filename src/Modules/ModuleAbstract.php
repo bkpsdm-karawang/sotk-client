@@ -60,6 +60,18 @@ abstract class ModuleAbstract implements ModuleContract
     }
 
     /**
+     * set endpoint
+     * @param string $endpoint
+     * @return ModuleAbstract
+     */
+    public function setEndpoint(string $endpoint): ModuleContract
+    {
+        $this->endpoint = $endpoint;
+
+        return $this;
+    }
+
+    /**
      * with query string
      * @param string $relation
      * @return ModuleAbstract
@@ -92,8 +104,7 @@ abstract class ModuleAbstract implements ModuleContract
      *
      * @param array $query
      * @param bool $transform
-     * @return \Illuminate\Support\Collection
-     * @throws Exception
+     * @return mixed
      */
     public function getList(array $query = [], bool $transform = true)
     {
@@ -130,7 +141,7 @@ abstract class ModuleAbstract implements ModuleContract
      * @param mixed $identifier
      * @param array $query
      * @param bool $transform
-     * @return \SotkClient\Models\Model
+     * @return mixed
      */
     public function getDetail($identifier, array $query = [], bool $transform = true)
     {
