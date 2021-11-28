@@ -142,14 +142,17 @@ class RouteRegistrar
             $router->get('/tugas-tambahan', ['uses' => 'Jabatan\JabatanTugasTambahanController@getList', 'as' => 'sotk.jabatan.tugas-tambahan.list']);
             $router->get('/tugas-tambahan/{id}', ['uses' => 'Jabatan\JabatanTugasTambahanController@getDetail', 'as' => 'sotk.jabatan.tugas-tambahan.detail']);
 
-            $router->get('/eselon', ['uses' => 'Jabatan\JabatanEselonController@getList', 'as' => 'sotk.jabatan.eselon.list']);
-            $router->get('/eselon/{id}', ['uses' => 'Jabatan\JabatanEselonController@getDetail', 'as' => 'sotk.jabatan.eselon.detail']);
+            $router->get('/tingkat', ['uses' => 'Jabatan\TingkatController@getList', 'as' => 'sotk.jabatan.tingkat.list']);
+            $router->get('/tingkat/{id}', ['uses' => 'Jabatan\TingkatController@getDetail', 'as' => 'sotk.jabatan.tingkat.detail']);
 
-            $router->get('/golongan', ['uses' => 'Jabatan\JabatanGolonganController@getList', 'as' => 'sotk.jabatan.golongan.list']);
-            $router->get('/golongan/{id}', ['uses' => 'Jabatan\JabatanGolonganController@getDetail', 'as' => 'sotk.jabatan.golongan.detail']);
+            $router->get('/eselon', ['uses' => 'Jabatan\EselonController@getList', 'as' => 'sotk.jabatan.eselon.list']);
+            $router->get('/eselon/{id}', ['uses' => 'Jabatan\EselonController@getDetail', 'as' => 'sotk.jabatan.eselon.detail']);
 
-            $router->get('/kelas', ['uses' => 'Jabatan\JabatanKelasController@getList', 'as' => 'sotk.jabatan.kelas.list']);
-            $router->get('/kelas/{id}', ['uses' => 'Jabatan\JabatanKelasController@getDetail', 'as' => 'sotk.jabatan.kelas.detail']);
+            $router->get('/golongan', ['uses' => 'Jabatan\GolonganController@getList', 'as' => 'sotk.jabatan.golongan.list']);
+            $router->get('/golongan/{id}', ['uses' => 'Jabatan\GolonganController@getDetail', 'as' => 'sotk.jabatan.golongan.detail']);
+
+            $router->get('/kelas', ['uses' => 'Jabatan\KelasController@getList', 'as' => 'sotk.jabatan.kelas.list']);
+            $router->get('/kelas/{id}', ['uses' => 'Jabatan\KelasController@getDetail', 'as' => 'sotk.jabatan.kelas.detail']);
 
             $router->get('/', ['uses' => 'Jabatan\JabatanController@getList', 'as' => 'sotk.jabatan.list']);
             $router->get('/{id}', ['uses' => 'Jabatan\JabatanController@getDetail', 'as' => 'sotk.jabatan.detail']);

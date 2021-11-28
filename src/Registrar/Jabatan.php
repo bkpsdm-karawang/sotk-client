@@ -13,6 +13,7 @@ use SotkClient\Modules\Jabatan\JabatanTugasTambahan;
 use SotkClient\Modules\Jabatan\JabatanFungsionalJenis;
 use SotkClient\Modules\Jabatan\JabatanPelaksanaJenis;
 use SotkClient\Modules\Jabatan\Kelas;
+use SotkClient\Modules\Jabatan\Tingkat;
 
 trait Jabatan
 {
@@ -34,6 +35,16 @@ trait Jabatan
     protected function createJabatanEselonDriver()
     {
         return new Eselon($this->client);
+    }
+
+    /**
+     * Create an instance of the specified driver.
+     *
+     * @return \SotkClient\Modules\AbstractModule
+     */
+    protected function createJabatanTingkatDriver()
+    {
+        return new Tingkat($this->client);
     }
 
     /**

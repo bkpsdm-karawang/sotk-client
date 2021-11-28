@@ -5,7 +5,7 @@ namespace SotkClient\Laravel\Http\Controllers\Jabatan;
 use SotkClient\Laravel\Facades\SotkClient;
 use SotkClient\Laravel\Http\Controllers\Controller;
 
-class JabatanKelasController extends Controller
+class KelasController extends Controller
 {
     /**
      * constructor
