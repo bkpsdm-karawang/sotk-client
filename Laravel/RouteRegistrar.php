@@ -2,8 +2,6 @@
 
 namespace SotkClient\Laravel;
 
-use Illuminate\Contracts\Routing\Registrar as Router;
-
 class RouteRegistrar
 {
     /**
@@ -19,7 +17,7 @@ class RouteRegistrar
      * @param  \Illuminate\Contracts\Routing\Registrar  $router
      * @return void
      */
-    public function __construct(Router $router)
+    public function __construct($router)
     {
         $this->router = $router;
     }

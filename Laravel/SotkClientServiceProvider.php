@@ -71,8 +71,8 @@ class SotkClientServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/config.php', 'sotk');
-        $config = $this->app->make(Config::class)->get('sotk');
+        $this->configure();
+        $config = config('sotk');
 
         $this->app->singleton('sotk.client', function () use ($config) {
             return new ClientManager($this->createGuzzleClient($config));
@@ -81,6 +81,19 @@ class SotkClientServiceProvider extends ServiceProvider
         $this->app->singleton('sotk.route', function () use ($config) {
             return new Router($config);
         });
+    }
+
+    /**
+     * apply configuration.
+     */
+    protected function configure()
+    {
+        if (method_exists($this->app, 'configure')) {
+            $this->app->configure('sotk');
+        }
+
+        $path = realpath(__DIR__.'/config.php');
+        $this->mergeConfigFrom($path, 'sotk');
     }
 
     /**
