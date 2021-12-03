@@ -152,6 +152,11 @@ class RouteRegistrar
             $router->get('/kelas', ['uses' => 'Jabatan\KelasController@getList', 'as' => 'sotk.jabatan.kelas.list']);
             $router->get('/kelas/{id}', ['uses' => 'Jabatan\KelasController@getDetail', 'as' => 'sotk.jabatan.kelas.detail']);
 
+            $router->get('/kompetensi', ['uses' => 'Jabatan\KompetensiController@getList', 'as' => 'sotk.jabatan.kompetensi.list']);
+            $router->get('/kompetensi/{id}', ['uses' => 'Jabatan\KompetensiController@getDetail', 'as' => 'sotk.jabatan.kompetensi.detail']);
+            $router->get('/kompetensi-group', ['uses' => 'Jabatan\KompetensiGroupController@getList', 'as' => 'sotk.jabatan.kompetensi-group.list']);
+            $router->get('/kompetensi-group/{id}', ['uses' => 'Jabatan\KompetensiGroupController@getDetail', 'as' => 'sotk.jabatan.kompetensi-group.detail']);
+
             $router->get('/', ['uses' => 'Jabatan\JabatanController@getList', 'as' => 'sotk.jabatan.list']);
             $router->get('/{id}', ['uses' => 'Jabatan\JabatanController@getDetail', 'as' => 'sotk.jabatan.detail']);
         });

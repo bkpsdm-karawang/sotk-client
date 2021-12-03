@@ -4,19 +4,19 @@ namespace SotkClient\Modules\Jabatan;
 
 use SotkClient\Modules\ModuleAbstract;
 
-class Eselon extends ModuleAbstract
+class KompetensiGroup extends ModuleAbstract
 {
     /**
      * base endpoint of module
      *
      * @var string
      */
-    protected $endpoint = '/eselon';
+    protected $endpoint = '/kompetensi-group';
 
     /**
      * model of module
      *
      * @var \SotkClient\Models\Base
      */
-    protected $model = \SotkClient\Models\Jabatan\Eselon::class;
+    protected $model = \SotkClient\Models\Jabatan\KompetensiGroup::class;
 }

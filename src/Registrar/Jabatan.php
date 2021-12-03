@@ -13,6 +13,8 @@ use SotkClient\Modules\Jabatan\JabatanTugasTambahan;
 use SotkClient\Modules\Jabatan\JabatanFungsionalJenis;
 use SotkClient\Modules\Jabatan\JabatanPelaksanaJenis;
 use SotkClient\Modules\Jabatan\Kelas;
+use SotkClient\Modules\Jabatan\Kompetensi;
+use SotkClient\Modules\Jabatan\KompetensiGroup;
 use SotkClient\Modules\Jabatan\Tingkat;
 
 trait Jabatan
@@ -135,5 +137,25 @@ trait Jabatan
     protected function createJabatanKelasDriver()
     {
         return new Kelas($this->client);
+    }
+
+    /**
+     * Create an instance of the specified driver.
+     *
+     * @return \SotkClient\Modules\AbstractModule
+     */
+    protected function createJabatanKompetensiDriver()
+    {
+        return new Kompetensi($this->client);
+    }
+
+    /**
+     * Create an instance of the specified driver.
+     *
+     * @return \SotkClient\Modules\AbstractModule
+     */
+    protected function createJabatanKompetensiGroupDriver()
+    {
+        return new KompetensiGroup($this->client);
     }
 }
