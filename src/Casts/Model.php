@@ -37,7 +37,10 @@ class Model implements CastsAttributes
     public function get($model, string $key, $value, array $attributes)
     {
         if (isset($attributes[$key])) {
-            return new $this->model(json_decode($attributes[$key], true));
+            $data = json_decode($attributes[$key], true);
+            if (is_array($data)) {
+                return new $this->model($data);
+            }
         }
 
         return null;
@@ -59,7 +62,9 @@ class Model implements CastsAttributes
                 $value = $value->toArray();
             }
 
-           return json_encode($value);
+            if (is_array($value)) {
+                return json_encode($value);
+            }
         }
 
         return null;
