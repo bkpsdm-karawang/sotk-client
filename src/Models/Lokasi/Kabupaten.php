@@ -2,11 +2,9 @@
 
 namespace SotkClient\Models\Lokasi;
 
-use Illuminate\Contracts\Database\Eloquent\Castable;
-use SotkClient\Cast\Lokasi\KabupatenCasting;
-use SotkClient\Models\Model;
+use SotkClient\Models\Base;
 
-class Kabupaten Extends Model implements Castable
+class Kabupaten Extends Base
 {
     /**
      * The attributes that should be cast.
@@ -15,17 +13,6 @@ class Kabupaten Extends Model implements Castable
      */
     protected $casts = [
         'provinsi' => Provinsi::class,
+        'kecamatan' => Kecamatan::class.':collection',
     ];
-
-    /**
-     * Get the name of the caster class to use when casting from / to this cast target.
-     *
-     * @param  array  $arguments
-     * @return string
-     * @return string|\Illuminate\Contracts\Database\Eloquent\CastsAttributes|\Illuminate\Contracts\Database\Eloquent\CastsInboundAttributes
-     */
-    public static function castUsing(array $arguments)
-    {
-        return KabupatenCasting::class;
-    }
 }

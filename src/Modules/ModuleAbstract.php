@@ -28,7 +28,7 @@ abstract class ModuleAbstract implements ModuleContract
     /**
      * model of module
      *
-     * @var \SotkClient\Models\Model
+     * @var \SotkClient\Models\Base
      */
     protected $model;
 
@@ -73,11 +73,19 @@ abstract class ModuleAbstract implements ModuleContract
 
     /**
      * with query string
-     * @param string $relation
+     * @param string|array $relation
      * @return ModuleAbstract
      */
-    public function with(string $relation): ModuleContract
+    public function with($relation = null): ModuleContract
     {
+        if (empty($relation)) {
+            return $this;
+        }
+
+        if (is_array($relation)) {
+            $relation = implode(',', $relation);
+        }
+
         if (isset($this->query['with'])) {
             $this->query['with'] .= ','.$relation;
         } else {

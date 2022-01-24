@@ -2,14 +2,12 @@
 
 namespace SotkClient\Models\Jabatan;
 
-use Illuminate\Contracts\Database\Eloquent\Castable;
-use SotkClient\Cast\Jabatan\JabatanCasting;
-use SotkClient\Cast\Jabatan\ReferensiJabatanCasting;
+use SotkClient\Casts\ReferensiJabatan;
 use SotkClient\Models\Skpd\Skpd;
 use SotkClient\Models\Skpd\UnitKerja;
-use SotkClient\Models\Model;
+use SotkClient\Models\Base;
 
-class Jabatan Extends Model implements Castable
+class Jabatan Extends Base
 {
     /**
      * The attributes that should be cast.
@@ -19,18 +17,6 @@ class Jabatan Extends Model implements Castable
     protected $casts = [
         'skpd' => Skpd::class,
         'unit_kerja' => UnitKerja::class,
-        'referensi' => ReferensiJabatanCasting::class,
+        'referensi' => ReferensiJabatan::class,
     ];
-
-    /**
-     * Get the name of the caster class to use when casting from / to this cast target.
-     *
-     * @param  array  $arguments
-     * @return string
-     * @return string|\Illuminate\Contracts\Database\Eloquent\CastsAttributes|\Illuminate\Contracts\Database\Eloquent\CastsInboundAttributes
-     */
-    public static function castUsing(array $arguments)
-    {
-        return JabatanCasting::class;
-    }
 }

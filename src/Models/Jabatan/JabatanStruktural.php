@@ -2,11 +2,9 @@
 
 namespace SotkClient\Models\Jabatan;
 
-use Illuminate\Contracts\Database\Eloquent\Castable;
-use SotkClient\Cast\Jabatan\JabatanStrukturalCasting;
-use SotkClient\Models\Model;
+use SotkClient\Models\Base;
 
-class JabatanStruktural Extends Model implements Castable, ReferensiJabatanContract
+class JabatanStruktural Extends Base implements ReferensiJabatanContract
 {
     /**
      * The attributes that should be cast.
@@ -14,18 +12,6 @@ class JabatanStruktural Extends Model implements Castable, ReferensiJabatanContr
      * @var array
      */
     protected $casts = [
-        'eselon' => Eselon::class
+        'eselon' => Eselon::class,
     ];
-
-    /**
-     * Get the name of the caster class to use when casting from / to this cast target.
-     *
-     * @param  array  $arguments
-     * @return string
-     * @return string|\Illuminate\Contracts\Database\Eloquent\CastsAttributes|\Illuminate\Contracts\Database\Eloquent\CastsInboundAttributes
-     */
-    public static function castUsing(array $arguments)
-    {
-        return JabatanStrukturalCasting::class;
-    }
 }

@@ -2,11 +2,9 @@
 
 namespace SotkClient\Models\Pendidikan;
 
-use Illuminate\Contracts\Database\Eloquent\Castable;
-use SotkClient\Cast\Pendidikan\JurusanCasting;
-use SotkClient\Models\Model;
+use SotkClient\Models\Base;
 
-class Jurusan Extends Model implements Castable
+class Jurusan Extends Base
 {
     /**
      * The attributes that should be cast.
@@ -14,18 +12,6 @@ class Jurusan Extends Model implements Castable
      * @var array
      */
     protected $casts = [
-        'tingkat' => Tingkat::class.':children',
+        'tingkat' => Tingkat::class.':collection',
     ];
-
-    /**
-     * Get the name of the caster class to use when casting from / to this cast target.
-     *
-     * @param  array  $arguments
-     * @return string
-     * @return string|\Illuminate\Contracts\Database\Eloquent\CastsAttributes|\Illuminate\Contracts\Database\Eloquent\CastsInboundAttributes
-     */
-    public static function castUsing(array $arguments)
-    {
-        return JurusanCasting::class;
-    }
 }

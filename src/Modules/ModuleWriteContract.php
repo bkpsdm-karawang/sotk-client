@@ -16,7 +16,7 @@ interface ModuleWriteContract extends ModuleContract
      * update resource.
      *
      * @param mixed $identifier
-     * @return \SotkClient\Models\Model
+     * @return \SotkClient\Models\Base
      */
     public function update($identifier, array $data, bool $transform = true);
 
@@ -24,7 +24,7 @@ interface ModuleWriteContract extends ModuleContract
      * delete resource.
      *
      * @param mixed $identifier
-     * @return \SotkClient\Models\Model
+     * @return \SotkClient\Models\Base
      */
     public function delete($identifier, bool $transform = true);
 }

@@ -2,11 +2,9 @@
 
 namespace SotkClient\Models\Skpd;
 
-use Illuminate\Contracts\Database\Eloquent\Castable;
-use SotkClient\Cast\Skpd\KantorSkpdCasting;
-use SotkClient\Models\Model;
+use SotkClient\Models\Base;
 
-class KantorSkpd Extends Model implements Castable
+class KantorSkpd Extends Base
 {
     /**
      * The attributes that should be cast.
@@ -17,16 +15,4 @@ class KantorSkpd Extends Model implements Castable
         'skpd' => Skpd::class,
         'unit_kerja' => UnitKerja::class,
     ];
-
-    /**
-     * Get the name of the caster class to use when casting from / to this cast target.
-     *
-     * @param  array  $arguments
-     * @return string
-     * @return string|\Illuminate\Contracts\Database\Eloquent\CastsAttributes|\Illuminate\Contracts\Database\Eloquent\CastsInboundAttributes
-     */
-    public static function castUsing(array $arguments)
-    {
-        return KantorSkpdCasting::class;
-    }
 }

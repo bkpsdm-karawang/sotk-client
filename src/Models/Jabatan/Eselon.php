@@ -2,11 +2,9 @@
 
 namespace SotkClient\Models\Jabatan;
 
-use Illuminate\Contracts\Database\Eloquent\Castable;
-use SotkClient\Cast\Jabatan\EselonCasting;
-use SotkClient\Models\Model;
+use SotkClient\Models\Base;
 
-class Eselon Extends Model implements Castable
+class Eselon Extends Base
 {
     /**
      * The attributes that should be cast.
@@ -14,20 +12,6 @@ class Eselon Extends Model implements Castable
      * @var array
      */
     protected $casts = [
-        'tingkat' => Tingkat::class,
-        'minimal_golongan' => Golongan::class,
-        'maksimal_golongan' => Golongan::class,
+        'tingkat' => Tingkat::class
     ];
-
-    /**
-     * Get the name of the caster class to use when casting from / to this cast target.
-     *
-     * @param  array  $arguments
-     * @return string
-     * @return string|\Illuminate\Contracts\Database\Eloquent\CastsAttributes|\Illuminate\Contracts\Database\Eloquent\CastsInboundAttributes
-     */
-    public static function castUsing(array $arguments)
-    {
-        return EselonCasting::class;
-    }
 }

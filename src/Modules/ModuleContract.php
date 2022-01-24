@@ -16,10 +16,10 @@ interface ModuleContract
 
     /**
      * with query string
-     * @param string $relation
-     * @return ModuleAbstract
+     * @param string|array $relation
+     * @return ModuleContract
      */
-    public function with(string $relation) : ModuleContract;
+    public function with($relation = null) : ModuleContract;
 
     /**
      * get listing data.

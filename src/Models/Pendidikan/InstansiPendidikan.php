@@ -2,11 +2,9 @@
 
 namespace SotkClient\Models\Pendidikan;
 
-use Illuminate\Contracts\Database\Eloquent\Castable;
-use SotkClient\Cast\Pendidikan\InstansiPendidikanCasting;
-use SotkClient\Models\Model;
+use SotkClient\Models\Base;
 
-abstract class InstansiPendidikan Extends Model implements Castable
+class InstansiPendidikan Extends Base
 {
     /**
      * The attributes that should be cast.
@@ -17,16 +15,4 @@ abstract class InstansiPendidikan Extends Model implements Castable
         'satuan' => Satuan::class,
         'lembaga' => Lembaga::class
     ];
-
-    /**
-     * Get the name of the caster class to use when casting from / to this cast target.
-     *
-     * @param  array  $arguments
-     * @return string
-     * @return string|\Illuminate\Contracts\Database\Eloquent\CastsAttributes|\Illuminate\Contracts\Database\Eloquent\CastsInboundAttributes
-     */
-    public static function castUsing(array $arguments)
-    {
-        return InstansiPendidikanCasting::class;
-    }
 }

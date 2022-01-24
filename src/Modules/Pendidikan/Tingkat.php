@@ -12,7 +12,7 @@ class Tingkat extends ModuleAbstract
      * @var array
      */
     protected $casts = [
-        'jurusan' => Jurusan::class.':children',
+        'jurusan' => Jurusan::class.':collection',
     ];
 
     /**

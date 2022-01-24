@@ -60,7 +60,7 @@ class Response
      * generate listing data
      *
      * @param \GuzzleHttp\Psr7\Response $response
-     * @return \SotkClient\Models\Model
+     * @return \SotkClient\Models\Base
      */
     public function generateDetail(PsrResponse $response)
     {
