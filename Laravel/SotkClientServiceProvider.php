@@ -8,7 +8,6 @@ use SotkClient\Laravel\Rules\IdGolonganRule;
 use SotkClient\Laravel\Rules\IdJabatanRule;
 use SotkClient\Laravel\Rules\IdSkpdRule;
 use SotkClient\Laravel\Rules\IdUnitKerjaRule;
-use Illuminate\Config\Repository as Config;
 use Illuminate\Support\ServiceProvider;
 use SotkClient\ClientManager;
 use Illuminate\Support\Facades\Validator;
