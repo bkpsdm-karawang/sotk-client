@@ -54,17 +54,17 @@ class RouteRegistrar
      * @param mixed $middleware string|array
      * @return void
      */
-    public function moduleLokasi($middleware = null)
+    public function moduleLokasi($middleware = null, $name = 'sotk')
     {
-        $this->router->group($this->createGroup('lokasi', $middleware), function ($router) {
-            $router->get('/provinsi', ['uses' => 'Lokasi\ProvinsiController@getList', 'as' => 'sotk.lokasi.provinsi.list']);
-            $router->get('/provinsi/{id}', ['uses' => 'Lokasi\ProvinsiController@getDetail', 'as' => 'sotk.lokasi.provinsi.detail']);
-            $router->get('/kabupaten', ['uses' => 'Lokasi\KabupatenController@getList', 'as' => 'sotk.lokasi.kabupaten.list']);
-            $router->get('/kabupaten/{id}', ['uses' => 'Lokasi\KabupatenController@getDetail', 'as' => 'sotk.lokasi.kabupaten.detail']);
-            $router->get('/kecamatan', ['uses' => 'Lokasi\KecamatanController@getList', 'as' => 'sotk.lokasi.kecamatan.list']);
-            $router->get('/kecamatan/{id}', ['uses' => 'Lokasi\KecamatanController@getDetail', 'as' => 'sotk.lokasi.kecamatan.detail']);
-            $router->get('/desa', ['uses' => 'Lokasi\DesaController@getList', 'as' => 'sotk.lokasi.desa.list']);
-            $router->get('/desa/{id}', ['uses' => 'Lokasi\DesaController@getDetail', 'as' => 'sotk.lokasi.desa.detail']);
+        $this->router->group($this->createGroup('lokasi', $middleware), function ($router) use ($name) {
+            $router->get('/provinsi', ['uses' => 'Lokasi\ProvinsiController@getList', 'as' => $name . '.lokasi.provinsi.list']);
+            $router->get('/provinsi/{id}', ['uses' => 'Lokasi\ProvinsiController@getDetail', 'as' => $name . '.lokasi.provinsi.detail']);
+            $router->get('/kabupaten', ['uses' => 'Lokasi\KabupatenController@getList', 'as' => $name . '.lokasi.kabupaten.list']);
+            $router->get('/kabupaten/{id}', ['uses' => 'Lokasi\KabupatenController@getDetail', 'as' => $name . '.lokasi.kabupaten.detail']);
+            $router->get('/kecamatan', ['uses' => 'Lokasi\KecamatanController@getList', 'as' => $name . '.lokasi.kecamatan.list']);
+            $router->get('/kecamatan/{id}', ['uses' => 'Lokasi\KecamatanController@getDetail', 'as' => $name . '.lokasi.kecamatan.detail']);
+            $router->get('/desa', ['uses' => 'Lokasi\DesaController@getList', 'as' => $name . '.lokasi.desa.list']);
+            $router->get('/desa/{id}', ['uses' => 'Lokasi\DesaController@getDetail', 'as' => $name . '.lokasi.desa.detail']);
         });
     }
 
@@ -74,21 +74,21 @@ class RouteRegistrar
      * @param mixed $middleware string|array
      * @return void
      */
-    public function modulePendidikan($middleware = null)
+    public function modulePendidikan($middleware = null, $name = 'sotk')
     {
-        $this->router->group($this->createGroup('pendidikan', $middleware), function ($router) {
-            $router->get('/tingkat', ['uses' => 'Pendidikan\TingkatController@getList', 'as' => 'sotk.pendidikan.tingkat.list']);
-            $router->get('/tingkat/{id}', ['uses' => 'Pendidikan\TingkatController@getDetail', 'as' => 'sotk.pendidikan.tingkat.detail']);
-            $router->get('/satuan', ['uses' => 'Pendidikan\SatuanController@getList', 'as' => 'sotk.pendidikan.satuan.list']);
-            $router->get('/satuan/{id}', ['uses' => 'Pendidikan\SatuanController@getDetail', 'as' => 'sotk.pendidikan.satuan.detail']);
-            $router->get('/jurusan', ['uses' => 'Pendidikan\JurusanController@getList', 'as' => 'sotk.pendidikan.jurusan.list']);
-            $router->get('/jurusan/{id}', ['uses' => 'Pendidikan\JurusanController@getDetail', 'as' => 'sotk.pendidikan.jurusan.detail']);
-            $router->get('/lembaga', ['uses' => 'Pendidikan\LembagaController@getList', 'as' => 'sotk.pendidikan.lembaga.list']);
-            $router->get('/lembaga/{id}', ['uses' => 'Pendidikan\LembagaController@getDetail', 'as' => 'sotk.pendidikan.lembaga.detail']);
-            $router->get('/sekolah', ['uses' => 'Pendidikan\SekolahController@getList', 'as' => 'sotk.pendidikan.sekolah.list']);
-            $router->get('/sekolah/{id}', ['uses' => 'Pendidikan\SekolahController@getDetail', 'as' => 'sotk.pendidikan.sekolah.detail']);
-            $router->get('/perguruan-tinggi', ['uses' => 'Pendidikan\PerguruanTinggiController@getList', 'as' => 'sotk.pendidikan.perguruan-tinggi.list']);
-            $router->get('/perguruan-tinggi/{id}', ['uses' => 'Pendidikan\PerguruanTinggiController@getDetail', 'as' => 'sotk.pendidikan.perguruan-tinggi.detail']);
+        $this->router->group($this->createGroup('pendidikan', $middleware), function ($router) use ($name) {
+            $router->get('/tingkat', ['uses' => 'Pendidikan\TingkatController@getList', 'as' => $name . '.pendidikan.tingkat.list']);
+            $router->get('/tingkat/{id}', ['uses' => 'Pendidikan\TingkatController@getDetail', 'as' => $name . '.pendidikan.tingkat.detail']);
+            $router->get('/satuan', ['uses' => 'Pendidikan\SatuanController@getList', 'as' => $name . '.pendidikan.satuan.list']);
+            $router->get('/satuan/{id}', ['uses' => 'Pendidikan\SatuanController@getDetail', 'as' => $name . '.pendidikan.satuan.detail']);
+            $router->get('/jurusan', ['uses' => 'Pendidikan\JurusanController@getList', 'as' => $name . '.pendidikan.jurusan.list']);
+            $router->get('/jurusan/{id}', ['uses' => 'Pendidikan\JurusanController@getDetail', 'as' => $name . '.pendidikan.jurusan.detail']);
+            $router->get('/lembaga', ['uses' => 'Pendidikan\LembagaController@getList', 'as' => $name . '.pendidikan.lembaga.list']);
+            $router->get('/lembaga/{id}', ['uses' => 'Pendidikan\LembagaController@getDetail', 'as' => $name . '.pendidikan.lembaga.detail']);
+            $router->get('/sekolah', ['uses' => 'Pendidikan\SekolahController@getList', 'as' => $name . '.pendidikan.sekolah.list']);
+            $router->get('/sekolah/{id}', ['uses' => 'Pendidikan\SekolahController@getDetail', 'as' => $name . '.pendidikan.sekolah.detail']);
+            $router->get('/perguruan-tinggi', ['uses' => 'Pendidikan\PerguruanTinggiController@getList', 'as' => $name . '.pendidikan.perguruan-tinggi.list']);
+            $router->get('/perguruan-tinggi/{id}', ['uses' => 'Pendidikan\PerguruanTinggiController@getDetail', 'as' => $name . '.pendidikan.perguruan-tinggi.detail']);
         });
     }
 
@@ -98,15 +98,15 @@ class RouteRegistrar
      * @param mixed $middleware string|array
      * @return void
      */
-    public function moduleSkpd($middleware = null)
+    public function moduleSkpd($middleware = null, $name = 'sotk')
     {
-        $this->router->group($this->createGroup('skpd', $middleware), function ($router) {
-            $router->get('/unit-kerja', ['uses' => 'Skpd\UnitKerjaController@getList', 'as' => 'sotk.skpd.unit-kerja.list']);
-            $router->get('/unit-kerja/{id}', ['uses' => 'Skpd\UnitKerjaController@getDetail', 'as' => 'sotk.skpd.unit-kerja.detail']);
-            $router->get('/kantor-skpd', ['uses' => 'Skpd\KantorSkpdController@getList', 'as' => 'sotk.skpd.kantor-skpd.list']);
-            $router->get('/kantor-skpd/{id}', ['uses' => 'Skpd\KantorSkpdController@getDetail', 'as' => 'sotk.skpd.kantor-skpd.detail']);
-            $router->get('/', ['uses' => 'Skpd\SkpdController@getList', 'as' => 'sotk.skpd.list']);
-            $router->get('/{id}', ['uses' => 'Skpd\SkpdController@getDetail', 'as' => 'sotk.skpd.detail']);
+        $this->router->group($this->createGroup('skpd', $middleware), function ($router) use ($name) {
+            $router->get('/unit-kerja', ['uses' => 'Skpd\UnitKerjaController@getList', 'as' => $name . '.skpd.unit-kerja.list']);
+            $router->get('/unit-kerja/{id}', ['uses' => 'Skpd\UnitKerjaController@getDetail', 'as' => $name . '.skpd.unit-kerja.detail']);
+            $router->get('/kantor-skpd', ['uses' => 'Skpd\KantorSkpdController@getList', 'as' => $name . '.skpd.kantor-skpd.list']);
+            $router->get('/kantor-skpd/{id}', ['uses' => 'Skpd\KantorSkpdController@getDetail', 'as' => $name . '.skpd.kantor-skpd.detail']);
+            $router->get('/', ['uses' => 'Skpd\SkpdController@getList', 'as' => $name . '.skpd.list']);
+            $router->get('/{id}', ['uses' => 'Skpd\SkpdController@getDetail', 'as' => $name . '.skpd.detail']);
         });
     }
     /**
@@ -115,50 +115,50 @@ class RouteRegistrar
      * @param mixed $middleware string|array
      * @return void
      */
-    public function moduleJabatan($middleware = null)
+    public function moduleJabatan($middleware = null, $name = 'sotk')
     {
-        $this->router->group($this->createGroup('jabatan', $middleware), function ($router) {
-            $router->get('/politik', ['uses' => 'Jabatan\JabatanPolitikController@getList', 'as' => 'sotk.jabatan.politik.list']);
-            $router->get('/politik/{id}', ['uses' => 'Jabatan\JabatanPolitikController@getDetail', 'as' => 'sotk.jabatan.politik.detail']);
-            $router->get('/struktural', ['uses' => 'Jabatan\JabatanStrukturalController@getList', 'as' => 'sotk.jabatan.struktural.list']);
-            $router->get('/struktural/{id}', ['uses' => 'Jabatan\JabatanStrukturalController@getDetail', 'as' => 'sotk.jabatan.struktural.detail']);
+        $this->router->group($this->createGroup('jabatan', $middleware), function ($router) use ($name) {
+            $router->get('/politik', ['uses' => 'Jabatan\JabatanPolitikController@getList', 'as' => $name . '.jabatan.politik.list']);
+            $router->get('/politik/{id}', ['uses' => 'Jabatan\JabatanPolitikController@getDetail', 'as' => $name . '.jabatan.politik.detail']);
+            $router->get('/struktural', ['uses' => 'Jabatan\JabatanStrukturalController@getList', 'as' => $name . '.jabatan.struktural.list']);
+            $router->get('/struktural/{id}', ['uses' => 'Jabatan\JabatanStrukturalController@getDetail', 'as' => $name . '.jabatan.struktural.detail']);
 
-            $router->group(['prefix' => 'fungsional'], function ($router) {
-                $router->get('/jenis', ['uses' => 'Jabatan\JabatanFungsionalJenisController@getList', 'as' => 'sotk.jabatan.jenis.fungsional.list']);
-                $router->get('/jenis/{id}', ['uses' => 'Jabatan\JabatanFungsionalJenisController@getDetail', 'as' => 'sotk.jabatan.jenis.fungsional.detail']);
-                $router->get('/', ['uses' => 'Jabatan\JabatanFungsionalController@getList', 'as' => 'sotk.jabatan.fungsional.list']);
-                $router->get('/{id}', ['uses' => 'Jabatan\JabatanFungsionalController@getDetail', 'as' => 'sotk.jabatan.fungsional.detail']);
+            $router->group(['prefix' => 'fungsional'], function ($router) use ($name) {
+                $router->get('/jenis', ['uses' => 'Jabatan\JabatanFungsionalJenisController@getList', 'as' => $name . '.jabatan.jenis.fungsional.list']);
+                $router->get('/jenis/{id}', ['uses' => 'Jabatan\JabatanFungsionalJenisController@getDetail', 'as' => $name . '.jabatan.jenis.fungsional.detail']);
+                $router->get('/', ['uses' => 'Jabatan\JabatanFungsionalController@getList', 'as' => $name . '.jabatan.fungsional.list']);
+                $router->get('/{id}', ['uses' => 'Jabatan\JabatanFungsionalController@getDetail', 'as' => $name . '.jabatan.fungsional.detail']);
             });
 
-            $router->group(['prefix' => 'pelaksana'], function ($router) {
-                $router->get('/jenis', ['uses' => 'Jabatan\JabatanPelaksanaJenisController@getList', 'as' => 'sotk.jabatan.jenis.pelaksana.list']);
-                $router->get('/jenis/{id}', ['uses' => 'Jabatan\JabatanPelaksanaJenisController@getDetail', 'as' => 'sotk.jabatan.jenis.pelaksana.detail']);
-                $router->get('/', ['uses' => 'Jabatan\JabatanPelaksanaController@getList', 'as' => 'sotk.jabatan.pelaksana.list']);
-                $router->get('/{id}', ['uses' => 'Jabatan\JabatanPelaksanaController@getDetail', 'as' => 'sotk.jabatan.pelaksana.detail']);
+            $router->group(['prefix' => 'pelaksana'], function ($router) use ($name) {
+                $router->get('/jenis', ['uses' => 'Jabatan\JabatanPelaksanaJenisController@getList', 'as' => $name . '.jabatan.jenis.pelaksana.list']);
+                $router->get('/jenis/{id}', ['uses' => 'Jabatan\JabatanPelaksanaJenisController@getDetail', 'as' => $name . '.jabatan.jenis.pelaksana.detail']);
+                $router->get('/', ['uses' => 'Jabatan\JabatanPelaksanaController@getList', 'as' => $name . '.jabatan.pelaksana.list']);
+                $router->get('/{id}', ['uses' => 'Jabatan\JabatanPelaksanaController@getDetail', 'as' => $name . '.jabatan.pelaksana.detail']);
             });
 
-            $router->get('/tugas-tambahan', ['uses' => 'Jabatan\JabatanTugasTambahanController@getList', 'as' => 'sotk.jabatan.tugas-tambahan.list']);
-            $router->get('/tugas-tambahan/{id}', ['uses' => 'Jabatan\JabatanTugasTambahanController@getDetail', 'as' => 'sotk.jabatan.tugas-tambahan.detail']);
+            $router->get('/tugas-tambahan', ['uses' => 'Jabatan\JabatanTugasTambahanController@getList', 'as' => $name . '.jabatan.tugas-tambahan.list']);
+            $router->get('/tugas-tambahan/{id}', ['uses' => 'Jabatan\JabatanTugasTambahanController@getDetail', 'as' => $name . '.jabatan.tugas-tambahan.detail']);
 
-            $router->get('/tingkat', ['uses' => 'Jabatan\TingkatController@getList', 'as' => 'sotk.jabatan.tingkat.list']);
-            $router->get('/tingkat/{id}', ['uses' => 'Jabatan\TingkatController@getDetail', 'as' => 'sotk.jabatan.tingkat.detail']);
+            $router->get('/tingkat', ['uses' => 'Jabatan\TingkatController@getList', 'as' => $name . '.jabatan.tingkat.list']);
+            $router->get('/tingkat/{id}', ['uses' => 'Jabatan\TingkatController@getDetail', 'as' => $name . '.jabatan.tingkat.detail']);
 
-            $router->get('/eselon', ['uses' => 'Jabatan\EselonController@getList', 'as' => 'sotk.jabatan.eselon.list']);
-            $router->get('/eselon/{id}', ['uses' => 'Jabatan\EselonController@getDetail', 'as' => 'sotk.jabatan.eselon.detail']);
+            $router->get('/eselon', ['uses' => 'Jabatan\EselonController@getList', 'as' => $name . '.jabatan.eselon.list']);
+            $router->get('/eselon/{id}', ['uses' => 'Jabatan\EselonController@getDetail', 'as' => $name . '.jabatan.eselon.detail']);
 
-            $router->get('/golongan', ['uses' => 'Jabatan\GolonganController@getList', 'as' => 'sotk.jabatan.golongan.list']);
-            $router->get('/golongan/{id}', ['uses' => 'Jabatan\GolonganController@getDetail', 'as' => 'sotk.jabatan.golongan.detail']);
+            $router->get('/golongan', ['uses' => 'Jabatan\GolonganController@getList', 'as' => $name . '.jabatan.golongan.list']);
+            $router->get('/golongan/{id}', ['uses' => 'Jabatan\GolonganController@getDetail', 'as' => $name . '.jabatan.golongan.detail']);
 
-            $router->get('/kelas', ['uses' => 'Jabatan\KelasController@getList', 'as' => 'sotk.jabatan.kelas.list']);
-            $router->get('/kelas/{id}', ['uses' => 'Jabatan\KelasController@getDetail', 'as' => 'sotk.jabatan.kelas.detail']);
+            $router->get('/kelas', ['uses' => 'Jabatan\KelasController@getList', 'as' => $name . '.jabatan.kelas.list']);
+            $router->get('/kelas/{id}', ['uses' => 'Jabatan\KelasController@getDetail', 'as' => $name . '.jabatan.kelas.detail']);
 
-            $router->get('/kompetensi', ['uses' => 'Jabatan\KompetensiController@getList', 'as' => 'sotk.jabatan.kompetensi.list']);
-            $router->get('/kompetensi/{id}', ['uses' => 'Jabatan\KompetensiController@getDetail', 'as' => 'sotk.jabatan.kompetensi.detail']);
-            $router->get('/kompetensi-group', ['uses' => 'Jabatan\KompetensiGroupController@getList', 'as' => 'sotk.jabatan.kompetensi-group.list']);
-            $router->get('/kompetensi-group/{id}', ['uses' => 'Jabatan\KompetensiGroupController@getDetail', 'as' => 'sotk.jabatan.kompetensi-group.detail']);
+            $router->get('/kompetensi', ['uses' => 'Jabatan\KompetensiController@getList', 'as' => $name . '.jabatan.kompetensi.list']);
+            $router->get('/kompetensi/{id}', ['uses' => 'Jabatan\KompetensiController@getDetail', 'as' => $name . '.jabatan.kompetensi.detail']);
+            $router->get('/kompetensi-group', ['uses' => 'Jabatan\KompetensiGroupController@getList', 'as' => $name . '.jabatan.kompetensi-group.list']);
+            $router->get('/kompetensi-group/{id}', ['uses' => 'Jabatan\KompetensiGroupController@getDetail', 'as' => $name . '.jabatan.kompetensi-group.detail']);
 
-            $router->get('/', ['uses' => 'Jabatan\JabatanController@getList', 'as' => 'sotk.jabatan.list']);
-            $router->get('/{id}', ['uses' => 'Jabatan\JabatanController@getDetail', 'as' => 'sotk.jabatan.detail']);
+            $router->get('/', ['uses' => 'Jabatan\JabatanController@getList', 'as' => $name . '.jabatan.list']);
+            $router->get('/{id}', ['uses' => 'Jabatan\JabatanController@getDetail', 'as' => $name . '.jabatan.detail']);
         });
     }
 }
