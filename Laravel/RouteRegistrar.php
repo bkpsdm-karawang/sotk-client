@@ -106,6 +106,7 @@ class RouteRegistrar
             $router->get('/kantor-skpd', ['uses' => 'Skpd\KantorSkpdController@getList', 'as' => $name . '.skpd.kantor-skpd.list']);
             $router->get('/kantor-skpd/{id}', ['uses' => 'Skpd\KantorSkpdController@getDetail', 'as' => $name . '.skpd.kantor-skpd.detail']);
             $router->get('/', ['uses' => 'Skpd\SkpdController@getList', 'as' => $name . '.skpd.list']);
+            $router->get('/urusan', ['uses' => 'Skpd\UrusanController@getList', 'as' => $name . '.skpd.urusan']);
             $router->get('/{id}', ['uses' => 'Skpd\SkpdController@getDetail', 'as' => $name . '.skpd.detail']);
         });
     }
