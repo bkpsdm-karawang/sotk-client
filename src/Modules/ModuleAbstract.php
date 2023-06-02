@@ -60,6 +60,15 @@ abstract class ModuleAbstract implements ModuleContract
     }
 
     /**
+     * get client
+     *
+     * @return \GuzzleHttp\Client
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+    /**
      * set endpoint
      * @param string $endpoint
      * @return ModuleAbstract

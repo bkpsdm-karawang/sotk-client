@@ -8,6 +8,13 @@ namespace SotkClient\Modules;
 interface ModuleContract
 {
     /**
+     * get client
+     *
+     * @return \GuzzleHttp\Client
+     */
+    public function getClient();
+
+    /**
      * with query string
      * @param string $relation
      * @return ModuleAbstract

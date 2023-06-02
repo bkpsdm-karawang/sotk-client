@@ -160,6 +160,8 @@ class RouteRegistrar
 
             $router->get('/', ['uses' => 'Jabatan\JabatanController@getList', 'as' => $name . '.jabatan.list']);
             $router->get('/{id}', ['uses' => 'Jabatan\JabatanController@getDetail', 'as' => $name . '.jabatan.detail']);
+            $router->get('/{id}/kualifikasi', ['uses' => 'Jabatan\JabatanController@getKualifikasi', 'as' => $name . '.jabatan.detail.kualifikasi']);
+            $router->get('/{id}/kompetensi', ['uses' => 'Jabatan\JabatanController@getKompetensi', 'as' => $name . '.jabatan.detail.kompetensi']);
         });
     }
 }
