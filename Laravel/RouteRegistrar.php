@@ -162,6 +162,11 @@ class RouteRegistrar
             $router->get('/{id}', ['uses' => 'Jabatan\JabatanController@getDetail', 'as' => $name . '.jabatan.detail']);
             $router->get('/{id}/kualifikasi', ['uses' => 'Jabatan\JabatanController@getKualifikasi', 'as' => $name . '.jabatan.detail.kualifikasi']);
             $router->get('/{id}/kompetensi', ['uses' => 'Jabatan\JabatanController@getKompetensi', 'as' => $name . '.jabatan.detail.kompetensi']);
+            $router->get('/{id}/jabatan_atasan', ['uses' => 'Jabatan\JabatanController@getJabatanAtasan', 'as' => $name . '.jabatan.detail.jabatan_atasan']);
+            $router->get('/{id}/jabatan_bawahan', ['uses' => 'Jabatan\JabatanController@getJabatanBawahan', 'as' => $name . '.jabatan.detail.jabatan_bawahan']);
+            $router->get('/{id}/jabatan_bawahan_group', ['uses' => 'Jabatan\JabatanController@getJabatanBawahanGroup', 'as' => $name . '.jabatan.detail.jabatan_bawahan_group']);
+            $router->get('/{id}/ancestors', ['uses' => 'Jabatan\JabatanController@getAncestors', 'as' => $name . '.jabatan.detail.ancestors']);
+            $router->get('/{id}/descendants', ['uses' => 'Jabatan\JabatanController@getDescendants', 'as' => $name . '.jabatan.detail.descendants']);
         });
     }
 }

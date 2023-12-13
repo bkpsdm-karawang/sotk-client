@@ -49,6 +49,62 @@ class JabatanController extends Controller
     }
 
     /**
+     * getJabatanAtasan
+     */
+    public function getJabatanAtasan($id)
+    {
+        $client = $this->client->getClient();
+        $response = $client->get("jabatan/{$id}/jabatan_atasan");
+
+        return $this->getDataFromResponse($response);
+    }
+
+    /**
+     * getJabatanBawahan
+     */
+    public function getJabatanBawahan($id)
+    {
+        $client = $this->client->getClient();
+        $response = $client->get("jabatan/{$id}/jabatan_bawahan");
+
+        return $this->getDataFromResponse($response);
+    }
+
+    /**
+     * getJabatanBawahanGroup
+     */
+    public function getJabatanBawahanGroup($id)
+    {
+        $client = $this->client->getClient();
+        $response = $client->get("jabatan/{$id}/jabatan_bawahan_group");
+
+        return $this->getDataFromResponse($response);
+    }
+
+    /**
+     * getAncestors
+     */
+    public function getAncestors($id)
+    {
+        $client = $this->client->getClient();
+        $response = $client->get("jabatan/{$id}/ancestors");
+
+        return $this->getDataFromResponse($response);
+    }
+
+    /**
+     * getDescendants
+     */
+    public function getDescendants($id)
+    {
+        $client = $this->client->getClient();
+        $response = $client->get("jabatan/{$id}/descendants");
+
+        return $this->getDataFromResponse($response);
+    }
+
+
+    /**
      * get data from psr response.
      */
     protected function getDataFromResponse(Response $response): array
