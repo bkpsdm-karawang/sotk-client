@@ -8,11 +8,11 @@ use SotkClient\Laravel\Rules\IdGolonganRule;
 use SotkClient\Laravel\Rules\IdJabatanRule;
 use SotkClient\Laravel\Rules\IdSkpdRule;
 use SotkClient\Laravel\Rules\IdUnitKerjaRule;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use SotkClient\ClientManager;
 use Illuminate\Support\Facades\Validator;
 
-class SotkClientServiceProvider extends ServiceProvider
+class ServiceProvider extends LaravelServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -87,10 +87,6 @@ class SotkClientServiceProvider extends ServiceProvider
      */
     protected function configure()
     {
-        if (method_exists($this->app, 'configure')) {
-            $this->app->configure('sotk');
-        }
-
         $path = realpath(__DIR__.'/config.php');
         $this->mergeConfigFrom($path, 'sotk');
     }

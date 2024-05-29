@@ -2,7 +2,7 @@
     "name": "bkpsdm-karawang/sotk-php-client",
     "type": "library",
     "description": "PHP Client for Sistem Informasi Pegawai BKPSDM Karawang",
-    "version": "1.1.7",
+    "version": "2.0.0",
     "authors": [
         {
             "name": "Denma Syarikin",
@@ -10,15 +10,16 @@
         }
     ],
     "require": {
-        "php": "^7.3",
-        "guzzlehttp/guzzle": "^7.0",
-        "illuminate/support": "^8.5",
-        "illuminate/database": "^8.5",
-        "illuminate/http": "^8.5",
-        "illuminate/validation": "^8.5"
+        "php": "^8.2",
+        "illuminate/support": "^10|^11",
+        "illuminate/http": "^10|^11",
+        "illuminate/pagination": "^10|^11",
+        "illuminate/database": "^10|^11",
+        "guzzlehttp/guzzle": "^7.0"
     },
-    "suggest": {
-        "laravel/framework": "^8.5"
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3",
+        "laravel/framework": "^10|^11"
     },
     "license": "MIT",
     "minimum-stability": "stable",
@@ -36,7 +37,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "SotkClient\\Laravel\\SotkClientServiceProvider"
+                "SotkClient\\Laravel\\ServiceProvider"
             ],
             "aliases": {
                 "SotkClient": "SotkClient\\Laravel\\Facades\\SotkClient",
